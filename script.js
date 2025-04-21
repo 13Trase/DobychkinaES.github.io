@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация Swiper с новыми параметрами
+
     const swiper = new Swiper('.mySwiper', {
-        // Опции
+
         loop: true,
         autoplay: {
             delay: 3000,
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        // Адаптация под разные экраны
+
         breakpoints: {
             640: {
                 slidesPerView: 1,
