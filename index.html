@@ -8,80 +8,113 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <title>Добычкина Е.С.</title>
 </head>
-<body>
+<body> 
+    <!-- Панель доступности -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-btn" id="accessibilityToggle">
+            <i class="fas fa-universal-access"></i>
+        </button>
+        <div class="accessibility-options">
+            <h2><button id="increaseFont">Увеличить шрифт</button></h2>
+            <h2><button id="decreaseFont">Уменьшить шрифт</button></h2>
+            <h2><button id="highContrast">Высокая контрастность</button></h2>
+            <h2><button id="normalContrast">Обычная контрастность</button></h2>
+            <h2><button id="grayscale">Оттенки серого</button></h2>
+        </div>
+    </div>
+
     <header class="header">
-        <div class="header-line">
+        <div class="header-line container">
             <div class="header-logo">
-                <a href="index.html">
-                    <img src="img/logo56.png" alt="Логотип">
+                <a href="#home" class="nav-link" data-page="home">
+                    <img src="img/logo56.png" alt="Логотип сайта Добычкиной Е.С.">
                 </a>
             </div>
-            <nav class="nav-item-header">
-                <a href="#home">ГЛАВНАЯ</a>
-                <a href="#about">ОБО МНЕ</a>
-                <a href="#journey">МОЙ ПУТЬ</a>
-                <a href="#contact">ОБРАТНАЯ СВЯЗЬ</a>
+            <nav class="nav-item-header" id="mainNav">
+                <a href="#home" class="nav-link active" data-page="home">ГЛАВНАЯ</a>
+                <a href="#about" class="nav-link" data-page="about">ОБО МНЕ</a>
+                <a href="#journey" class="nav-link" data-page="journey">МОЙ ПУТЬ</a>
+                <a href="#methodology" class="nav-link" data-page="methodology">МЕТОДИЧЕСКАЯ КОПИЛКА</a>
+                <a href="#achievements" class="nav-link" data-page="achievements">ДОСТИЖЕНИЯ</a>
+                <a href="#resources" class="nav-link" data-page="resources">РЕСУРСЫ</a>
+                <a href="#news" class="nav-link" data-page="news">НОВОСТИ</a>
+                <a href="#contact" class="nav-link" data-page="contact">ОБРАТНАЯ СВЯЗЬ</a>
             </nav>
+            <button class="mobile-menu-btn" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <section class="main" id="home">
-        <div class="maintxt">
-            <h1 class="FIO">
-                Добычкина<br>
-                Елена<br>
-                Сергеевна
-            </h1>
-            <div class="citata">
-                "Моя миссия — вдохновлять и поддерживать
-                каждого ученика на пути к успеху,
-                открывая перед ним двери в мир знаний и творчества."
+    <!-- Главная страница -->
+    <section id="home" class="page-section active">
+        <div class="main container">
+            <div class="maintxt">
+                <h1 class="FIO">
+                    Добычкина<br>
+                    Елена<br>
+                    Сергеевна
+                </h1>
+                <div class="citata">
+                    "Моя миссия — вдохновлять и поддерживать
+                    каждого ученика на пути к успеху,
+                    открывая перед ним двери в мир знаний и творчества."
+                </div>
+                <div class="three-container" id="threeContainer1"></div>
             </div>
-        </div>
-        <div class="mainphoto">
-            <img src="img/mmmm.jpg" alt="">
-        </div>
-    </section>
-
-    <section id="about">
-        <h2 class="section-title">Обо мне</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Мой путь в профессию начался с искренней любви к детям и желания помогать им раскрывать свой потенциал. Каждый день я прихожу в школу с уверенностью, что могу сделать мир моих учеников чуть ярче и интереснее.
-
-
-            </div>
-            <div class="about-photo">
-                <img src="img/about-photo.jpg" alt="">
+            <div class="mainphoto">
+                <img src="img/mmmm.jpg" alt="Добычкина Елена Сергеевна">
             </div>
         </div>
     </section>
 
-    <section id="journey">
+    <!-- Обо мне -->
+    <section id="about" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Мой путь в профессию начался с искренней любви к детям и желания помогать им раскрывать свой потенциал. Каждый день я прихожу в школу с уверенностью, что могу сделать мир моих учеников чуть ярче и интереснее.</p>
+                    <p>Я работаю учителем уже более 15 лет, имею высшую квалификационную категорию. Закончила Московский педагогический государственный университет по специальности "Педагогика и методика начального образования".</p>
+                    <p>Как председатель профсоюзного комитета нашей школы, я также уделяю большое внимание защите интересов наших сотрудников и созданию благоприятных условий для их профессиональной деятельности.</p>
+                    <p>В своей работе я активно использую современные образовательные технологии, включая проектную деятельность, дифференцированное обучение и ИКТ.</p>
+                </div>
+                <div class="about-photo">
+                    <img src="img/about-photo.jpg" alt="Добычкина Елена Сергеевна в классе">
+                </div>
+            </div>
+            <div class="three-container" id="threeContainer2"></div>
+        </div>
+    </section>
+
+<!-- Мой путь -->
+<section id="journey" class="page-section">
+    <div class="container">
         <h2 class="section-title">Мой путь</h2>
         <div class="journey-content">
             <div class="journey-text">
-                Моя работа заключается не только в передаче знаний, но и в создании атмосферы доверия и взаимопонимания между мной и моими учениками. Я убеждена, что каждый ребенок обладает уникальными талантами, и моя задача — помочь ему раскрыть эти таланты и поверить в себя. Именно поэтому я постоянно ищу новые подходы и методы, которые помогут сделать процесс обучения увлекательным и эффективным.</p>
-                <p>Кроме того, я активно занимаюсь внеклассной деятельностью, организуя различные мероприятия и проекты, направленные на развитие творческих способностей детей. Например, мне особенно нравится проводить занятия по робототехнике, где ребята могут проявить свою фантазию и технические навыки, создавая собственные модели роботов.
+                <p>Моя работа заключается не только в передаче знаний, но и в создании атмосферы доверия и взаимопонимания между мной и моими учениками. Я убеждена, что каждый ребенок обладает уникальными талантами, и моя задача — помочь ему раскрыть эти таланты и поверить в себя. Именно поэтому я постоянно ищу новые подходы и методы, которые помогут сделать процесс обучения увлекательным и эффективным.</p>
+                
+                <p>Кроме того, я активно занимаюсь внеклассной деятельностью, организуя различные мероприятия и проекты, направленные на развитие творческих способностей детей. Например, мне особенно нравится проводить занятия по робототехнике, где ребята могут проявить свою фантазию и технические навыки, создавая собственные модели роботов.</p>
 
-                    Как председатель профсоюзного комитета нашей школы, я также уделяю большое внимание защите интересов наших сотрудников и созданию благоприятных условий для их профессиональной деятельности. Важно, чтобы каждый член коллектива чувствовал поддержку и мог развиваться в своем направлении.</p>
+                <p>Как председатель профсоюзного комитета нашей школы, я также уделяю большое внимание защите интересов наших сотрудников и созданию благоприятных условий для их профессиональной деятельности. Важно, чтобы каждый член коллектива чувствовал поддержку и мог развиваться в своем направлении.</p>
 
             </div>
             <div class="journey-carousel">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="img/fk0.jpg" alt="Проект 1">
+                            <img src="img/fk0.jpg" alt="Занятие по робототехнике">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/fk1.jpg" alt="Проект 2">
+                            <img src="img/fk1.jpg" alt="Проектная деятельность учеников">
                         </div>
                         <div class="swiper-slide">
-                            <img src="img/fk2.jpg" alt="Проект 3">
+                            <img src="img/fk2.jpg" alt="Внеклассные мероприятия">
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -90,38 +123,218 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="contact">
-        <h2 class="section-title">Обратная связь</h2>
-        <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label for="name">Ваше имя</label>
-                    <input type="text" id="name" name="name" required>
+    <!-- Методическая копилка -->
+    <section id="methodology" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Методическая копилка</h2>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="card-img">
+                        <img src="img/ИМЯ ПРИЛАГ.png" alt="КЛАСТЕР ИМЯ ПРИЛАГАТ">
+                    </div>
+                    <div class="card-content">
+                        <h3>КЛАСТЕР ИМЯ ПРИЛАГАТ</h3>
+                        <p></p>
+                        <a href="content/КЛАСТЕР ИМЯ ПРИЛАГАТ. НОВЫЙ.pdf" class="btn">Смотреть</a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="material-card">
+                    <div class="card-img">
+                        <img src="img/тексты по кругу.png" alt="Тексты по кругу">
+                    </div>
+                    <div class="card-content">
+                        <h3>Тексты по кругу</h3>
+                        <p></p>
+                        <a href="https://disk.yandex.ru/d/P4ZIK7dbXXRihg" class="btn">Смотреть</a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Сообщение</label>
-                    <textarea id="message" name="message" required></textarea>
+                <div class="material-card">
+                    <div class="card-img">
+                        <img src="img/стратегииметод.png" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h3>Cтратегий смысловго чтения</h3>
+                        <p></p>
+                        <a href="https://disk.yandex.ru/d/5P9_QI6z8T5ogQ" class="btn">Смотреть</a>
+                    </div>
                 </div>
-                <button type="submit" class="submit-btn">Отправить</button>
-            </form>
+                <!-- <div class="material-card">
+                    <div class="card-img">
+                        <img src="img/method4.jpg" alt="Проектная деятельность">
+                    </div>
+                    <div class="card-content">
+                        <h3>Проектная деятельность</h3>
+                        <p>Методические рекомендации по организации проектной деятельности в начальной школе.</p>
+                        <a href="#" class="btn">Изучить</a>
+                    </div>
+                </div> -->
+            </div>
+            <div class="three-container" id="threeContainer3"></div>
         </div>
     </section>
 
+    <!-- Достижения -->
+    <section id="achievements" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Достижения</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="card-img">
+                        <img src="img/Грамота.png" alt="Достижения учеников">
+                    </div>
+                    <div class="card-content">
+                        <h3>Достижения учеников</h3>
+                        <p>Мои ученики регулярно занимают призовые места в олимпиадах и конкурсах.</p>
+                        <a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FGrjDojAfKxqmI9Zic7vKSs1imEwWowAoS5BWZ0Sg7fIBjZlhUGErp73OXrFlqBmEq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%BE%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B0%D0%B4%D1%8B%20%D0%B8%20%D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81%D1%8B%20%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%2F%D0%BA%D0%B2%D0%B5%D1%81%D1%82%D0%92%D0%9E%D0%92.pdf&name=%D0%BA%D0%B2%D0%B5%D1%81%D1%82%D0%92%D0%9E%D0%92.pdf&nosw=1" class="btn">Смотерть</a>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="card-img">
+                        <img src="img/моидост.png" alt="Публикации">
+                    </div>
+                    <div class="card-content">
+                        <h3>Мои достижения</h3>
+                        <p>Статьи в профессиональных журналах и сборниках конференций.</p>
+                        <a href="https://disk.yandex.ru/i/-9lXIhOnPE-tAA" class="btn">Смотерть</a>
+                    </div>
+                </div>
+                <!-- <div class="achievement-card">
+                    <div class="card-img">
+                        <img src="img/ach4.jpg" alt="Повышение квалификации">
+                    </div>
+                    <div class="card-content">
+                        <h3>Повышение квалификации</h3>
+                        <p>Регулярное прохождение курсов повышения квалификации, участие в вебинарах.</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Ресурсы -->
+    <section id="resources" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Полезные ресурсы</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="card-img">
+                        <img src="img/KIM.png" alt="Для педагогов">
+                    </div>
+                    <div class="card-content">
+                        <h3>КИМ нач.школа</h3>
+                        <p>Ссылки на профессиональные сообщества, методические сайты, нормативные документы.</p>
+                        <a href="https://disk.yandex.ru/d/G9qKF4KpGV0q_w" class="btn">Перейти</a>
+                    </div>
+                </div>
+                <!-- <div class="resource-card">
+                    <div class="card-img">
+                        <img src="img/res2.jpg" alt="Для родителей">
+                    </div>
+                    <div class="card-content">
+                        <h3>Для родителей</h3>
+                        <p>Полезные материалы по воспитанию и развитию детей, советы психолога.</p>
+                        <a href="#" class="btn">Изучить</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="card-img">
+                        <img src="img/res3.jpg" alt="Для учеников">
+                    </div>
+                    <div class="card-content">
+                        <h3>Для учеников</h3>
+                        <p>Интересные задания, развивающие игры, образовательные платформы.</p>
+                        <a href="#" class="btn">Играть</a>
+                    </div>
+                </div>
+            </div> -->
+            <div class="three-container" id="threeContainer4"></div>
+        </div>
+    </section>
+
+    <!-- Новости -->
+    <section id="news" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Новости</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-date">15 мая 2025</div>
+                    <h3 class="news-title">Вебинар "Современные подходы к оцениванию в начальной школе"</h3>
+                    <p>Приглашаю коллег на вебинар, который состоится 25 мая в 15:00. Регистрация по ссылке.</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">10 мая 2025</div>
+                    <h3 class="news-title">Итоги конкурса проектов "Мой родной край"</h3>
+                    <p>Подведены итоги школьного конкурса проектов. Поздравляем всех участников и победителей!</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">5 мая 2025</div>
+                    <h3 class="news-title">Открытая лекция для родителей</h3>
+                    <p>18 мая в 18:00 состоится открытая лекция для родителей "Как помочь ребенку с домашними заданиями".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Обратная связь -->
+<section id="contact" class="page-section">
+    <div class="container">
+        <h2 class="section-title">Обратная связь</h2>
+        
+        <div class="contact-form">
+            <iframe name="hidden-iframe" id="hidden-iframe" style="display: none;"></iframe>
+            
+            <form id="feedbackForm" 
+                  action="https://docs.google.com/forms/d/e/1FAIpQLSfT4q-EM_-T4hdCLKSqSEyYnQZC2Izyq-_4oW0tU6ynjzItXg/formResponse" 
+                  method="POST" 
+                  target="hidden-iframe">
+                <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" id="name" name="entry.1526262757" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="entry.1867137281" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение *</label>
+                    <textarea id="message" name="entry.2140455162" required placeholder="Опишите ваш вопрос или предложение..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Отправить сообщение</span>
+                    <span class="btn-loading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Отправка...
+                    </span>
+                </button>
+            </form>
+            
+            <div class="form-note">
+                <p><small>Нажимая "Отправить сообщение", вы соглашаетесь с обработкой ваших данных.</small></p>
+            </div>
+        </div>
+    </div>
+</section>
+
     <footer>
-        <p>© 2025 Добычкина Елена Сергеевна</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-vk"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <div class="container">
+            <p>© 2025 Добычкина Елена Сергеевна</p>
+            <div class="social-links">
+                <!-- <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a> -->
+            </div>
+            <p><small>Все материалы сайта являются интеллектуальной собственностью автора. При использовании материалов ссылка на источник обязательна.</small></p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="js/three-scenes.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/accessibility.js"></script>
 </body>
 </html>
