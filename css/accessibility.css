@@ -1,0 +1,117 @@
+.accessibility-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(206, 206, 206);
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.accessibility-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 40px !important; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.accessibility-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.accessibility-options {
+    display: none;
+    margin-top: 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+.accessibility-panel.open .accessibility-options {
+    display: block;
+}
+
+.accessibility-options button {
+    display: block;
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 8px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 28px;
+}
+
+.accessibility-options button:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* Стили для версии с высокой контрастностью */
+body.high-contrast {
+    background-color: #242424;
+    color: #fff;
+    filter: contrast(200%);
+}
+
+body.high-contrast .header {
+    background: #000;
+    border-bottom: 2px solid #fff;
+}
+
+body.high-contrast .resource-card,
+body.high-contrast .material-card,
+body.high-contrast .achievement-card,
+body.high-contrast .news-item,
+body.high-contrast .contact-form {
+    background: #000;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+body.high-contrast .btn,
+body.high-contrast .submit-btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+}
+
+/* Стили для оттенков серого */
+body.grayscale {
+    filter: grayscale(100%);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Увеличенные шрифты */
+body.large-font {
+    font-size: 28px;
+}
+
+body.large-font h1 { font-size: 3.5em; }
+body.large-font h2 { font-size: 3em; }
+body.large-font h3 { font-size: 2.5em; }
+
+body.extra-large-font {
+    font-size: 30px;
+}
+
+body.extra-large-font h1 { font-size: 4em; }
+body.extra-large-font h2 { font-size: 3.5em; }
+body.extra-large-font h3 { font-size: 3em; }
