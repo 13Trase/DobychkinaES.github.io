@@ -1,34 +1,21 @@
-function initContactTabs() {
-    const tabBtns = document.querySelectorAll('.contact-tab-btn');
-    const tabContents = document.querySelectorAll('.contact-tab-content');
-    
-    console.log('Found contact tab buttons:', tabBtns.length);
-    console.log('Found contact tab contents:', tabContents.length);
-    
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            console.log('Contact tab clicked:', btn.getAttribute('data-tab'));
-            
-            // Убираем активный класс у всех кнопок и контента
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-            
-            // Добавляем активный класс текущей кнопке и соответствующему контенту
-            btn.classList.add('active');
-            const tabId = btn.getAttribute('data-tab');
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.classList.add('active');
-                console.log('Showing contact tab:', tabId);
-            } else {
-                console.error('Contact tab content not found:', tabId);
-            }
-        });
-    });
-}
-
+// Основной скрипт сайта
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация Swiper
+    console.log('DOM loaded, initializing scripts...');
+    
+    // Инициализация всех модулей
+    initSwiper();
+    initNavigation();
+    initMobileMenu();
+    initContactTabs();
+    initAchievementsTabs();
+    initFormHandling();
+    initGuideClose();
+    
+    console.log('All scripts initialized successfully');
+});
+
+// Инициализация Swiper карусели
+function initSwiper() {
     const swiper = new Swiper('.mySwiper', {
         loop: true,
         autoplay: {
@@ -58,8 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         }
     });
+}
 
-    // Навигация по страницам
+// Навигация по страницам
+function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const pageSections = document.querySelectorAll('.page-section');
     
@@ -72,16 +61,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Показываем нужный раздел
-        document.getElementById(pageId).classList.add('active');
-        
-        // Добавляем активный класс соответствующей ссылке
-        document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active');
-        
-        // Закрываем мобильное меню, если оно открыто
-        document.getElementById('mainNav').classList.remove('active');
-        
-        // Прокрутка к верху страницы
-        window.scrollTo(0, 0);
+        const targetSection = document.getElementById(pageId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+            
+            // Добавляем активный класс соответствующей ссылке
+            const targetLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+            
+            // Закрываем мобильное меню, если оно открыто
+            const mainNav = document.getElementById('mainNav');
+            if (mainNav) {
+                mainNav.classList.remove('active');
+            }
+            
+            // Прокрутка к верху страницы
+            window.scrollTo(0, 0);
+        }
     }
     
     navLinks.forEach(link => {
@@ -91,8 +89,19 @@ document.addEventListener('DOMContentLoaded', function() {
             showPage(targetPage);
         });
     });
+    
+    // Обработка хеша в URL при загрузке
+    const hash = window.location.hash;
+    if (hash) {
+        const targetPage = hash.replace('#', '');
+        if (targetPage && document.getElementById(targetPage)) {
+            setTimeout(() => showPage(targetPage), 100);
+        }
+    }
+}
 
-    // Мобильное меню
+// Мобильное меню
+function initMobileMenu() {
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mainNav = document.getElementById('mainNav');
     
@@ -100,12 +109,63 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuToggle.addEventListener('click', function() {
             mainNav.classList.toggle('active');
         });
+        
+        // Закрытие меню при клике на ссылку
+        const navLinks = mainNav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+            });
+        });
     }
+}
 
-    // Инициализация вкладок обратной связи - ДОБАВЬТЕ ЭТУ СТРОКУ
-    initContactTabs();
+// Вкладки обратной связи
+function initContactTabs() {
+    const tabBtns = document.querySelectorAll('.contact-tab-btn');
+    const tabContents = document.querySelectorAll('.contact-tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Убираем активный класс у всех кнопок и контента
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Добавляем активный класс текущей кнопке и соответствующему контенту
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+}
 
-    // Обработка формы обратной связи
+// Вкладки достижений
+function initAchievementsTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Убираем активный класс у всех кнопок и контента
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Добавляем активный класс текущей кнопке и соответствующему контенту
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+}
+
+// Обработка формы обратной связи
+function initFormHandling() {
     const feedbackForm = document.getElementById('feedbackForm');
     const hiddenIframe = document.getElementById('hidden-iframe');
 
@@ -199,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hideLoadingState(submitBtn);
             
             // Показываем уведомление об успехе
-            showNotification(' Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.', 'success');
+            showNotification('✅ Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.', 'success');
             
             // Сбрасываем форму
             feedbackForm.reset();
@@ -249,224 +309,153 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error updating submission status:', error);
             }
         }
-
-        // Функция показа уведомлений
-        function showNotification(message, type = 'info') {
-            // Удаляем предыдущие уведомления
-            const existingNotification = document.querySelector('.form-notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-            
-            const icons = {
-                success: 'fa-check-circle',
-                error: 'fa-exclamation-circle',
-                info: 'fa-info-circle'
-            };
-            
-            const notification = document.createElement('div');
-            notification.className = `form-notification form-notification-${type}`;
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <i class="fas ${icons[type]}"></i>
-                    <span>${message}</span>
-                    <button class="notification-close">&times;</button>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Показываем уведомление с небольшой задержкой для анимации
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            // Автоматическое скрытие через 5 секунд
-            const autoHide = setTimeout(() => {
-                hideNotification(notification);
-            }, 5000);
-            
-            // Закрытие по клику
-            notification.querySelector('.notification-close').addEventListener('click', () => {
-                clearTimeout(autoHide);
-                hideNotification(notification);
-            });
-        }
-
-        function hideNotification(notification) {
-            notification.classList.remove('show');
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 300);
-        }
-
-        // Функция для проверки сохраненных данных
-        window.checkSubmissions = function() {
-            const submissions = JSON.parse(localStorage.getItem('feedbackSubmissions') || '[]');
-            console.log('Saved submissions:', submissions);
-            alert(`Сохранено сообщений: ${submissions.length}\nПроверьте консоль для деталей`);
-            return submissions;
-        };
-
-        // Проверяем сохраненные данные при загрузке
-        console.log('Stored submissions:', JSON.parse(localStorage.getItem('feedbackSubmissions') || '[]'));
     }
+}
 
-    // Данные для грамот (можно расширить)
-    const certificatesData = [
-        {
-            id: 1,
-            image: 'img/certificates/certificate1.jpg',
-            title: 'Сертификат о повышении квалификации',
-            year: '2024 год'
-        },
-        {
-            id: 2,
-            image: 'img/certificates/certificate2.jpg',
-            title: 'Благодарственное письмо',
-            year: '2023 год'
-        },
-        {
-            id: 3,
-            image: 'img/certificates/certificate3.jpg',
-            title: ' от администрации',
-            year: '2024 год'
+// Функция показа уведомлений
+function showNotification(message, type = 'info') {
+    // Удаляем предыдущие уведомления
+    const existingNotification = document.querySelector('.form-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const icons = {
+        success: 'fa-check-circle',
+        error: 'fa-exclamation-circle',
+        info: 'fa-info-circle'
+    };
+    
+    const notification = document.createElement('div');
+    notification.className = `form-notification form-notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${icons[type]}"></i>
+            <span>${message}</span>
+            <button class="notification-close">&times;</button>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Показываем уведомление с небольшой задержкой для анимации
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Автоматическое скрытие через 5 секунд
+    const autoHide = setTimeout(() => {
+        hideNotification(notification);
+    }, 5000);
+    
+    // Закрытие по клику
+    notification.querySelector('.notification-close').addEventListener('click', () => {
+        clearTimeout(autoHide);
+        hideNotification(notification);
+    });
+}
+
+function hideNotification(notification) {
+    notification.classList.remove('show');
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
         }
-    ];
+    }, 300);
+}
 
-    let currentCertificateIndex = 0;
+// Функции для модального окна грамот
+function openCertificateModal(imageSrc) {
+    const modal = document.getElementById('certificateModal');
+    const modalImg = document.getElementById('modalCertificateImage');
+    const modalTitle = document.getElementById('modalCertificateTitle');
+    const modalYear = document.getElementById('modalCertificateYear');
+    
+    if (!modal || !modalImg) {
+        console.error('Modal elements not found');
+        return;
+    }
+    
+    console.log('Opening certificate modal:', imageSrc);
+    
+    modalImg.src = imageSrc;
+    modalTitle.textContent = 'Грамота';
+    modalYear.textContent = '';
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Добавляем обработчик для клавиатуры
+    document.addEventListener('keydown', handleKeyboardNavigation);
+}
 
-    // Функции для работы с вкладками достижений
-    function initAchievementsTabs() {
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
+function closeCertificateModal() {
+    const modal = document.getElementById('certificateModal');
+    if (!modal) return;
+    
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    // Убираем обработчик клавиатуры
+    document.removeEventListener('keydown', handleKeyboardNavigation);
+}
+
+function handleKeyboardNavigation(e) {
+    if (e.key === 'Escape') {
+        closeCertificateModal();
+    }
+}
+
+// Закрытие инструкции при клике вне ее
+function initGuideClose() {
+    // Клик вне модального окна
+    document.addEventListener('click', function(e) {
+        const guideModal = document.getElementById('guideModal');
+        const helpBtn = document.querySelector('.footer-help-btn');
         
-        console.log('Found tab buttons:', tabBtns.length);
-        console.log('Found tab contents:', tabContents.length);
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                console.log('Tab clicked:', btn.getAttribute('data-tab'));
-                
-                // Убираем активный класс у всех кнопок и контента
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Добавляем активный класс текущей кнопке и соответствующему контенту
-                btn.classList.add('active');
-                const tabId = btn.getAttribute('data-tab');
-                const targetContent = document.getElementById(tabId);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                    console.log('Showing tab:', tabId);
-                } else {
-                    console.error('Tab content not found:', tabId);
-                }
-            });
-        });
-        
-        // Проверяем, есть ли активная вкладка в URL
-        const hash = window.location.hash;
-        if (hash && hash !== '#achievements') {
-            const targetTab = document.querySelector(`[data-tab="${hash.replace('#', '')}"]`);
-            if (targetTab) {
-                console.log('Activating tab from URL:', hash);
-                targetTab.click();
+        if (guideModal && guideModal.classList.contains('show')) {
+            if (e.target === guideModal || e.target.classList.contains('modal-overlay')) {
+                toggleFooterGuide();
             }
         }
-    }
-
-    // Функции для модального окна грамот
-    function openCertificateModal(imageSrc) {
-        const modal = document.getElementById('certificateModal');
-        const modalImg = document.getElementById('modalCertificateImage');
-        const modalTitle = document.getElementById('modalCertificateTitle');
-        const modalYear = document.getElementById('modalCertificateYear');
-        
-        if (!modal || !modalImg) {
-            console.error('Modal elements not found');
-            return;
+    });
+    
+    // Закрытие по клавише ESC
+    document.addEventListener('keydown', function(e) {
+        const guideModal = document.getElementById('guideModal');
+        if (e.key === 'Escape' && guideModal && guideModal.classList.contains('show')) {
+            toggleFooterGuide();
         }
+    });
+}
+
+// Функция для инструкции в футере
+function toggleFooterGuide() {
+    const guideModal = document.getElementById('guideModal');
+    if (guideModal) {
+        const isShowing = guideModal.classList.contains('show');
         
-        console.log('Opening certificate modal:', imageSrc);
-        
-        // Находим индекс текущей грамоты
-        currentCertificateIndex = certificatesData.findIndex(cert => cert.image === imageSrc);
-        
-        if (currentCertificateIndex !== -1) {
-            const certificate = certificatesData[currentCertificateIndex];
-            modalImg.src = certificate.image;
-            modalTitle.textContent = certificate.title;
-            modalYear.textContent = certificate.year;
+        if (isShowing) {
+            // Закрываем модальное окно
+            guideModal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Возвращаем прокрутку
         } else {
-            modalImg.src = imageSrc;
-            modalTitle.textContent = 'Грамота';
-            modalYear.textContent = '';
-        }
-        
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        
-        // Добавляем обработчик для клавиатуры
-        document.addEventListener('keydown', handleKeyboardNavigation);
-    }
-
-    function closeCertificateModal() {
-        const modal = document.getElementById('certificateModal');
-        if (!modal) return;
-        
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        
-        // Убираем обработчик клавиатуры
-        document.removeEventListener('keydown', handleKeyboardNavigation);
-    }
-
-    function navigateCertificate(direction) {
-        currentCertificateIndex += direction;
-        
-        // Зацикливаем навигацию
-        if (currentCertificateIndex < 0) {
-            currentCertificateIndex = certificatesData.length - 1;
-        } else if (currentCertificateIndex >= certificatesData.length) {
-            currentCertificateIndex = 0;
-        }
-        
-        const certificate = certificatesData[currentCertificateIndex];
-        const modalImg = document.getElementById('modalCertificateImage');
-        const modalTitle = document.getElementById('modalCertificateTitle');
-        const modalYear = document.getElementById('modalCertificateYear');
-        
-        modalImg.src = certificate.image;
-        modalTitle.textContent = certificate.title;
-        modalYear.textContent = certificate.year;
-    }
-
-    function handleKeyboardNavigation(e) {
-        if (e.key === 'Escape') {
-            closeCertificateModal();
-        } else if (e.key === 'ArrowLeft') {
-            navigateCertificate(-1);
-        } else if (e.key === 'ArrowRight') {
-            navigateCertificate(1);
+            // Открываем модальное окно
+            guideModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
         }
     }
+}
 
-    // Закрытие модального окна при клике на оверлей
-    const modalOverlay = document.querySelector('.modal-overlay');
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeCertificateModal);
-    }
+// Делаем функции глобальными для использования в HTML
+window.openCertificateModal = openCertificateModal;
+window.closeCertificateModal = closeCertificateModal;
+window.toggleFooterGuide = toggleFooterGuide;
 
-    // Инициализация вкладок достижений
-    initAchievementsTabs();
-
-    // Делаем функции глобальными для использования в HTML
-    window.openCertificateModal = openCertificateModal;
-    window.closeCertificateModal = closeCertificateModal;
-    window.navigateCertificate = navigateCertificate;
-
-    console.log('Achievements module initialized');
-});
+// Функция для проверки сохраненных данных (для отладки)
+window.checkSubmissions = function() {
+    const submissions = JSON.parse(localStorage.getItem('feedbackSubmissions') || '[]');
+    console.log('Saved submissions:', submissions);
+    alert(`Сохранено сообщений: ${submissions.length}\nПроверьте консоль для деталей`);
+    return submissions;
+};
