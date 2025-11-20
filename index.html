@@ -175,43 +175,139 @@
         </div>
     </section>
 
-    <!-- Достижения -->
-    <section id="achievements" class="page-section">
-        <div class="container">
-            <h2 class="section-title">Достижения</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="card-img">
-                        <img src="img/Грамота.png" alt="Достижения учеников">
+
+<!-- Достижения -->
+<section id="achievements" class="page-section">
+    <div class="container">
+        <h2 class="section-title">Достижения</h2>
+        
+        <div class="achievements-tabs">
+            <button class="tab-btn active" data-tab="certificates">Мои грамоты и сертификаты</button>
+            <button class="tab-btn" data-tab="students">Достижения учеников</button>
+            <!-- <button class="tab-btn" data-tab="publications">Публикации</button> -->
+        </div>
+
+        <div class="tab-content active" id="certificates">
+            <div class="certificates-grid">              
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/УОПК.jpg" alt="Сертификат о повышении квалификации" onclick="openCertificateModal('img/УОПК.jpg')">
                     </div>
-                    <div class="card-content">
-                        <h3>Достижения учеников</h3>
-                        <p>Мои ученики регулярно занимают призовые места в олимпиадах и конкурсах.</p>
-                        <a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FGrjDojAfKxqmI9Zic7vKSs1imEwWowAoS5BWZ0Sg7fIBjZlhUGErp73OXrFlqBmEq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%BE%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B0%D0%B4%D1%8B%20%D0%B8%20%D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81%D1%8B%20%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%2F%D0%BA%D0%B2%D0%B5%D1%81%D1%82%D0%92%D0%9E%D0%92.pdf&name=%D0%BA%D0%B2%D0%B5%D1%81%D1%82%D0%92%D0%9E%D0%92.pdf&nosw=1" class="btn">Смотерть</a>
-                    </div>
-                </div>
-                <div class="achievement-card">
-                    <div class="card-img">
-                        <img src="img/моидост.png" alt="Публикации">
-                    </div>
-                    <div class="card-content">
-                        <h3>Мои достижения</h3>
-                        <p>Статьи в профессиональных журналах и сборниках конференций.</p>
-                        <a href="https://disk.yandex.ru/i/-9lXIhOnPE-tAA" class="btn">Смотерть</a>
+                    <div class="certificate-info">
+                        <h3>Сертификат о повышении квалификации</h3>
+                        <p>2024 год</p>
                     </div>
                 </div>
-                <!-- <div class="achievement-card">
-                    <div class="card-img">
-                        <img src="img/ach4.jpg" alt="Повышение квалификации">
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/бп1.jpg" alt="Благодарственное письмо" onclick="openCertificateModal('img/бп1.jpg')">
                     </div>
-                    <div class="card-content">
-                        <h3>Повышение квалификации</h3>
-                        <p>Регулярное прохождение курсов повышения квалификации, участие в вебинарах.</p>
+                    <div class="certificate-info">
+                        <h3>Благодарственное письмо</h3>
+                        <p>2025 год</p>
                     </div>
-                </div> -->
+                </div>
+
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/бп2.jpg" alt="Благодарственное письмо" onclick="openCertificateModal('img/бп2.jpg')">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Благодарственное письмо</h3>
+                        <p>2025 год</p>
+                    </div>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/бп3.jpg" alt="Благодарственное письмо" onclick="openCertificateModal('img/бп3.jpg')">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Благодарственное письмо</h3>
+                        <p>2023 год</p>
+                    </div>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/бп4.jpg" alt="Благодарственное письмо" onclick="openCertificateModal('img/бп4.jpg')">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Благодарственное письмо</h3>
+                        <p>2025 год</p>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
-    </section>
+
+        <!-- Вкладка с достижениями учеников -->
+        <div class="tab-content" id="students">
+            <div class="certificates-grid">
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/грамота 2б.png" alt="Грамота" onclick="openCertificateModal('img/грамота 2б.png')">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Грамота</h3>
+                        <p>2024 год</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/грамота 1б.png" alt="Грамота" onclick="openCertificateModal('img/грамота 1б.png')">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Грамота</h3>
+                        <p>2023 год</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/диплом4.png" alt="Диплом" onclick="openCertificateModal('img/диплом4.png')">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Грамота</h3>
+                        <p>2024 год</p>
+                    </div>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="img/Грамота5.png" alt="Диплом" onclick="openCertificateModal('img/грамота5.png')">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Грамота</h3>
+                        <p>2025 год</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- Модальное окно для полноэкранного просмотра грамот -->
+<div id="certificateModal" class="certificate-modal">
+    <div class="modal-overlay" onclick="closeCertificateModal()"></div>
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeCertificateModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-content">
+            <img id="modalCertificateImage" src="" alt="Грамота">
+        </div>
+        <div class="modal-info">
+            <h3 id="modalCertificateTitle">Название грамоты</h3>
+            <p id="modalCertificateYear">2024 год</p>
+        </div>
+    </div>
+</div>
 
     <!-- Ресурсы -->
     <section id="resources" class="page-section">
@@ -346,7 +442,6 @@
 </body>
 
 </html>
-
 
 
 
