@@ -1,3 +1,32 @@
+function initContactTabs() {
+    const tabBtns = document.querySelectorAll('.contact-tab-btn');
+    const tabContents = document.querySelectorAll('.contact-tab-content');
+    
+    console.log('Found contact tab buttons:', tabBtns.length);
+    console.log('Found contact tab contents:', tabContents.length);
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            console.log('Contact tab clicked:', btn.getAttribute('data-tab'));
+            
+            // Убираем активный класс у всех кнопок и контента
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Добавляем активный класс текущей кнопке и соответствующему контенту
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                console.log('Showing contact tab:', tabId);
+            } else {
+                console.error('Contact tab content not found:', tabId);
+            }
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Инициализация Swiper
     const swiper = new Swiper('.mySwiper', {
@@ -72,6 +101,9 @@ document.addEventListener('DOMContentLoaded', function() {
             mainNav.classList.toggle('active');
         });
     }
+
+    // Инициализация вкладок обратной связи - ДОБАВЬТЕ ЭТУ СТРОКУ
+    initContactTabs();
 
     // Обработка формы обратной связи
     const feedbackForm = document.getElementById('feedbackForm');
