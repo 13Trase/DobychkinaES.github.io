@@ -1,39 +1,81 @@
+/* Панель доступности */
 .accessibility-panel {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: rgb(206, 206, 206);
-    border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-    padding: 15px;
+    background: transparent;
     z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Объединенная кнопка доступности */
+.accessibility-combined-btn {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.accessibility-btn {
+/* Кнопка скрытия/показа - слева */
+.accessibility-toggle-btn {
     background: var(--accent-color);
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    font-size: 40px !important; 
-    cursor: pointer;
+    border-radius: 8px 0 0 8px;
+    width: 40px;
+    height: 60px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.accessibility-btn:hover {
+.accessibility-toggle-btn:hover {
     background: var(--primary-color);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
+/* Основная кнопка доступности - справа */
+.accessibility-main-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility-main-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* Опции доступности */
 .accessibility-options {
     display: none;
-    margin-top: 15px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    min-width: 200px;
     animation: fadeIn 0.3s ease;
+    border: 1px solid #ddd;
 }
 
 .accessibility-panel.open .accessibility-options {
@@ -43,14 +85,15 @@
 .accessibility-options button {
     display: block;
     width: 100%;
-    padding: 30px;
+    padding: 10px 15px;
     margin-bottom: 8px;
     background: #f5f5f5;
     border: 1px solid #ddd;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 28px;
+    font-size: 14px;
+    text-align: left;
 }
 
 .accessibility-options button:hover {
@@ -59,59 +102,255 @@
     border-color: var(--accent-color);
 }
 
-/* Стили для версии с высокой контрастностью */
+.accessibility-options button:last-child {
+    margin-bottom: 0;
+}
+
+/* Стили для скрытой панели */
+.accessibility-panel.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Кнопка показа панели */
+.accessibility-show-btn {
+    position: fixed;
+    bottom: 20px;
+    right: -60px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    width: 40px;
+    height: 60px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    z-index: 999;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility-show-btn.show {
+    right: 0;
+}
+
+.accessibility-show-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* Стили для увеличенных шрифтов */
+body.large-font {
+    font-size: 18px !important;
+}
+
+body.large-font h1 { 
+    font-size: 2.5em;
+}
+
+body.large-font h2 { 
+    font-size: 2em;
+}
+
+body.large-font h3 { 
+    font-size: 1.6em;
+}
+
+body.large-font .section-title {
+    font-size: 2.2em;
+}
+
+body.large-font .FIO {
+    font-size: 3em;
+}
+
+body.large-font .citata {
+    font-size: 1.2em;
+}
+
+body.large-font .btn,
+body.large-font .submit-btn {
+    font-size: 1.1em;
+    padding: 12px 24px;
+}
+
+body.large-font .nav-item-header a {
+    font-size: 16px;
+}
+
+body.extra-large-font {
+    font-size: 20px !important;
+}
+
+body.extra-large-font h1 { 
+    font-size: 2.8em;
+}
+
+body.extra-large-font h2 { 
+    font-size: 2.3em;
+}
+
+body.extra-large-font h3 { 
+    font-size: 1.8em;
+}
+
+body.extra-large-font .section-title {
+    font-size: 2.5em;
+}
+
+body.extra-large-font .FIO {
+    font-size: 3.5em;
+}
+
+body.extra-large-font .citata {
+    font-size: 1.4em;
+}
+
+body.extra-large-font .btn,
+body.extra-large-font .submit-btn {
+    font-size: 1.2em;
+    padding: 14px 28px;
+}
+
+body.extra-large-font .nav-item-header a {
+    font-size: 17px;
+}
+
+body.super-large-font {
+    font-size: 22px !important;
+}
+
+body.super-large-font h1 { 
+    font-size: 3.2em;
+}
+
+body.super-large-font h2 { 
+    font-size: 2.7em;
+}
+
+body.super-large-font h3 { 
+    font-size: 2.2em;
+}
+
+body.super-large-font .section-title {
+    font-size: 3em;
+}
+
+body.super-large-font .FIO {
+    font-size: 4em;
+}
+
+body.super-large-font .citata {
+    font-size: 1.6em;
+}
+
+body.super-large-font .btn,
+body.super-large-font .submit-btn {
+    font-size: 1.3em;
+    padding: 16px 32px;
+}
+
+body.super-large-font .nav-item-header a {
+    font-size: 18px;
+}
+
+/* Высокая контрастность */
 body.high-contrast {
-    background-color: #242424;
-    color: #fff;
-    filter: contrast(200%);
+    --light-color: #000000;
+    --dark-color: #ffffff;
+    --text-color: #ffffff;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 body.high-contrast .header {
-    background: #000;
-    border-bottom: 2px solid #fff;
+    background: #000000;
+    border-bottom: 2px solid #ffffff;
 }
 
 body.high-contrast .resource-card,
 body.high-contrast .material-card,
-body.high-contrast .achievement-card,
+body.high-contrast .certificate-item,
 body.high-contrast .news-item,
-body.high-contrast .contact-form {
-    background: #000;
-    border: 1px solid #fff;
-    color: #fff;
+body.high-contrast .contact-form,
+body.high-contrast .contact-card,
+body.high-contrast .contact-instructions {
+    background: #000000;
+    border: 2px solid #ffffff;
+    color: #ffffff;
 }
 
-body.high-contrast .btn,
-body.high-contrast .submit-btn {
-    background: #fff;
-    color: #000;
-    border: 1px solid #fff;
+body.high-contrast .btn {
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
 }
 
-/* Стили для оттенков серого */
+body.high-contrast .btn:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* Оттенки серого */
 body.grayscale {
     filter: grayscale(100%);
 }
 
+/* Адаптивность для доступности */
+@media (max-width: 768px) {
+    .accessibility-panel {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .accessibility-main-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .accessibility-toggle-btn {
+        width: 35px;
+        height: 50px;
+        font-size: 14px;
+    }
+    
+    .accessibility-show-btn {
+        width: 35px;
+        height: 50px;
+        font-size: 14px;
+        bottom: 10px;
+    }
+    
+    .accessibility-options {
+        min-width: 180px;
+        padding: 10px;
+    }
+    
+    .accessibility-options button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    body.large-font {
+        font-size: 16px !important;
+    }
+    
+    body.extra-large-font {
+        font-size: 18px !important;
+    }
+    
+    body.super-large-font {
+        font-size: 20px !important;
+    }
+}
+
 /* Анимации */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* Увеличенные шрифты */
-body.large-font {
-    font-size: 28px;
-}
-
-body.large-font h1 { font-size: 3.5em; }
-body.large-font h2 { font-size: 3em; }
-body.large-font h3 { font-size: 2.5em; }
-
-body.extra-large-font {
-    font-size: 30px;
-}
-
-body.extra-large-font h1 { font-size: 4em; }
-body.extra-large-font h2 { font-size: 3.5em; }
-body.extra-large-font h3 { font-size: 3em; }
