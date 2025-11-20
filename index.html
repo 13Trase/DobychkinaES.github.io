@@ -581,60 +581,100 @@
 <p>Победители:<br>1. Татьяна Кабанова, учитель обществознания Лицея.<br>2. Карина Лямова, учитель начальных классов школы № 45.<br>3. Анастасия Баклыкова, учитель начальных классов школы № 81.
 <p>Татьяна Кабанова представит город на областном этапе конкурса. Все финалисты и их наставники получили награды и подарки от Управления образования и Профсоюза.</p>
                 </div>
-                <div class="news-item">
-                    <div class="news-date">15 мая 2025</div>
-                    <h3 class="news-title">Вебинар "Современные подходы к оцениванию в начальной школе"</h3>
-                    <p>Приглашаю коллег на вебинар, который состоится 25 мая в 15:00. Регистрация по ссылке.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">10 мая 2025</div>
-                    <h3 class="news-title">Итоги конкурса проектов "Мой родной край"</h3>
-                    <p>Подведены итоги школьного конкурса проектов. Поздравляем всех участников и победителей!</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">5 мая 2025</div>
-                    <h3 class="news-title">Открытая лекция для родителей</h3>
-                    <p>18 мая в 18:00 состоится открытая лекция для родителей "Как помочь ребенку с домашними заданиями".</p>
-                </div>
             </div>
         </div>
     </section>
 
 
 <!-- Обратная связь -->
+<!-- Обратная связь -->
 <section id="contact" class="page-section">
     <div class="container">
         <h2 class="section-title">Обратная связь</h2>
         
-        <div class="contact-form">
-            <iframe name="hidden-iframe" id="hidden-iframe" style="display: none;"></iframe>
-            
-            <form id="feedbackForm" 
-                  action="https://docs.google.com/forms/d/e/1FAIpQLSfT4q-EM_-T4hdCLKSqSEyYnQZC2Izyq-_4oW0tU6ynjzItXg/formResponse" 
-                  method="POST" 
-                  target="hidden-iframe">
-                <div class="form-group">
-                    <label for="name">Ваше имя *</label>
-                    <input type="text" id="name" name="entry.1526262757" required>
+        <!-- Переключатель способов связи -->
+        <div class="contact-tabs">
+            <button class="contact-tab-btn active" data-tab="form">Написать сообщение</button>
+            <button class="contact-tab-btn" data-tab="direct">Связаться напрямую</button>
+        </div>
+
+        <!-- Вкладка с формой -->
+        <div class="contact-tab-content active" id="form">
+            <div class="contact-form">
+                <iframe name="hidden-iframe" id="hidden-iframe" style="display: none;"></iframe>
+                
+                <form id="feedbackForm" 
+                      action="https://docs.google.com/forms/d/e/1FAIpQLSfT4q-EM_-T4hdCLKSqSEyYnQZC2Izyq-_4oW0tU6ynjzItXg/formResponse" 
+                      method="POST" 
+                      target="hidden-iframe">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="entry.1526262757" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="entry.1867137281" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение *</label>
+                        <textarea id="message" name="entry.2140455162" required placeholder="Опишите ваш вопрос или предложение..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Отправить сообщение</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Отправка...
+                        </span>
+                    </button>
+                </form>
+                
+                <div class="form-note">
+                    <p><small>Нажимая "Отправить сообщение", вы соглашаетесь с обработкой ваших данных.</small></p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="entry.1867137281" required>
+            </div>
+        </div>
+
+        <!-- Вкладка с прямыми контактами -->
+        <div class="contact-tab-content" id="direct">
+            <div class="direct-contact">
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Электронная почта</h3>
+                            <p>Напишите мне на email</p>
+                            <a href="mailto:E-l-e-n-a-a1@ya.ru" class="contact-link">
+                                E-l-e-n-a-a1@ya.ru
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-vk"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>ВКонтакте</h3>
+                            <p>Напишите в сообщения</p>
+                            <a href="https://vk.com/mbou_sosh56" target="_blank" class="contact-link">
+                                Перейти в ВК
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Сообщение *</label>
-                    <textarea id="message" name="entry.2140455162" required placeholder="Опишите ваш вопрос или предложение..."></textarea>
+
+                <div class="contact-instructions">
+                    <h3>Как связаться:</h3>
+                    <ul>
+                        <li>📧 <strong>Email</strong> - для подробных вопросов и документации</li>
+                        <li>📞 <strong>Телефон</strong> - для срочных вопросов</li>
+                        <li>💬 <strong>Мессенджеры</strong> - для быстрой связи</li>
+                        <li>🕒 <strong>Время для связи</strong>: Пн-Пт с 9:00 до 18:00</li>
+                    </ul>
                 </div>
-                <button type="submit" class="submit-btn">
-                    <span class="btn-text">Отправить сообщение</span>
-                    <span class="btn-loading" style="display: none;">
-                        <i class="fas fa-spinner fa-spin"></i> Отправка...
-                    </span>
-                </button>
-            </form>
-            
-            <div class="form-note">
-                <p><small>Нажимая "Отправить сообщение", вы соглашаетесь с обработкой ваших данных.</small></p>
             </div>
         </div>
     </div>
@@ -661,6 +701,7 @@
 </body>
 
 </html>
+
 
 
 
