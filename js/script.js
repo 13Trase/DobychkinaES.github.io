@@ -67,9 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mainNav = document.getElementById('mainNav');
     
-    mobileMenuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-    });
+    if (mobileMenuToggle && mainNav) {
+        mobileMenuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+    }
 
     // Обработка формы обратной связи
     const feedbackForm = document.getElementById('feedbackForm');
@@ -279,4 +281,160 @@ document.addEventListener('DOMContentLoaded', function() {
         // Проверяем сохраненные данные при загрузке
         console.log('Stored submissions:', JSON.parse(localStorage.getItem('feedbackSubmissions') || '[]'));
     }
+
+    // Данные для грамот (можно расширить)
+    const certificatesData = [
+        {
+            id: 1,
+            image: 'img/certificates/certificate1.jpg',
+            title: 'Сертификат о повышении квалификации',
+            year: '2024 год'
+        },
+        {
+            id: 2,
+            image: 'img/certificates/certificate2.jpg',
+            title: 'Благодарственное письмо',
+            year: '2023 год'
+        },
+        {
+            id: 3,
+            image: 'img/certificates/certificate3.jpg',
+            title: ' от администрации',
+            year: '2024 год'
+        }
+    ];
+
+    let currentCertificateIndex = 0;
+
+    // Функции для работы с вкладками достижений
+    function initAchievementsTabs() {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        console.log('Found tab buttons:', tabBtns.length);
+        console.log('Found tab contents:', tabContents.length);
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Tab clicked:', btn.getAttribute('data-tab'));
+                
+                // Убираем активный класс у всех кнопок и контента
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Добавляем активный класс текущей кнопке и соответствующему контенту
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                const targetContent = document.getElementById(tabId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                    console.log('Showing tab:', tabId);
+                } else {
+                    console.error('Tab content not found:', tabId);
+                }
+            });
+        });
+        
+        // Проверяем, есть ли активная вкладка в URL
+        const hash = window.location.hash;
+        if (hash && hash !== '#achievements') {
+            const targetTab = document.querySelector(`[data-tab="${hash.replace('#', '')}"]`);
+            if (targetTab) {
+                console.log('Activating tab from URL:', hash);
+                targetTab.click();
+            }
+        }
+    }
+
+    // Функции для модального окна грамот
+    function openCertificateModal(imageSrc) {
+        const modal = document.getElementById('certificateModal');
+        const modalImg = document.getElementById('modalCertificateImage');
+        const modalTitle = document.getElementById('modalCertificateTitle');
+        const modalYear = document.getElementById('modalCertificateYear');
+        
+        if (!modal || !modalImg) {
+            console.error('Modal elements not found');
+            return;
+        }
+        
+        console.log('Opening certificate modal:', imageSrc);
+        
+        // Находим индекс текущей грамоты
+        currentCertificateIndex = certificatesData.findIndex(cert => cert.image === imageSrc);
+        
+        if (currentCertificateIndex !== -1) {
+            const certificate = certificatesData[currentCertificateIndex];
+            modalImg.src = certificate.image;
+            modalTitle.textContent = certificate.title;
+            modalYear.textContent = certificate.year;
+        } else {
+            modalImg.src = imageSrc;
+            modalTitle.textContent = 'Грамота';
+            modalYear.textContent = '';
+        }
+        
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Добавляем обработчик для клавиатуры
+        document.addEventListener('keydown', handleKeyboardNavigation);
+    }
+
+    function closeCertificateModal() {
+        const modal = document.getElementById('certificateModal');
+        if (!modal) return;
+        
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Убираем обработчик клавиатуры
+        document.removeEventListener('keydown', handleKeyboardNavigation);
+    }
+
+    function navigateCertificate(direction) {
+        currentCertificateIndex += direction;
+        
+        // Зацикливаем навигацию
+        if (currentCertificateIndex < 0) {
+            currentCertificateIndex = certificatesData.length - 1;
+        } else if (currentCertificateIndex >= certificatesData.length) {
+            currentCertificateIndex = 0;
+        }
+        
+        const certificate = certificatesData[currentCertificateIndex];
+        const modalImg = document.getElementById('modalCertificateImage');
+        const modalTitle = document.getElementById('modalCertificateTitle');
+        const modalYear = document.getElementById('modalCertificateYear');
+        
+        modalImg.src = certificate.image;
+        modalTitle.textContent = certificate.title;
+        modalYear.textContent = certificate.year;
+    }
+
+    function handleKeyboardNavigation(e) {
+        if (e.key === 'Escape') {
+            closeCertificateModal();
+        } else if (e.key === 'ArrowLeft') {
+            navigateCertificate(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigateCertificate(1);
+        }
+    }
+
+    // Закрытие модального окна при клике на оверлей
+    const modalOverlay = document.querySelector('.modal-overlay');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeCertificateModal);
+    }
+
+    // Инициализация вкладок достижений
+    initAchievementsTabs();
+
+    // Делаем функции глобальными для использования в HTML
+    window.openCertificateModal = openCertificateModal;
+    window.closeCertificateModal = closeCertificateModal;
+    window.navigateCertificate = navigateCertificate;
+
+    console.log('Achievements module initialized');
 });
