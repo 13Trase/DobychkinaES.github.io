@@ -1969,3 +1969,245 @@ body.extra-large-font .certificate-info h3 {
 body.extra-large-font .certificate-info p {
     font-size: 1.1em;
 }
+
+
+/* Стили для переключателя контактов */
+.contact-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #eee;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact-tab-btn {
+    background: none;
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 8px 8px 0 0;
+}
+
+.contact-tab-btn:hover {
+    color: var(--primary-color);
+    background: rgba(255, 126, 95, 0.1);
+}
+
+.contact-tab-btn.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    background: rgba(255, 126, 95, 0.1);
+}
+
+.contact-tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.contact-tab-content.active {
+    display: block;
+}
+
+/* Стили для прямых контактов */
+.direct-contact {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+    font-family: 'Playfair Display', serif;
+}
+
+.contact-info p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.contact-link {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.contact-link:hover {
+    background: white;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Инструкции по связи */
+.contact-instructions {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary-color);
+}
+
+.contact-instructions h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+    font-family: 'Playfair Display', serif;
+}
+
+.contact-instructions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-instructions li {
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.contact-instructions li:last-child {
+    border-bottom: none;
+}
+
+.contact-instructions strong {
+    color: var(--primary-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .contact-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-tab-btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        padding: 12px 20px;
+    }
+    
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-card {
+        padding: 20px;
+    }
+    
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    .contact-instructions {
+        padding: 20px;
+    }
+}
+
+/* Стили для больших шрифтов */
+body.large-font .contact-tab-btn {
+    font-size: 17px;
+    padding: 17px 27px;
+}
+
+body.large-font .contact-info h3 {
+    font-size: 1.4em;
+}
+
+body.large-font .contact-info p {
+    font-size: 1.1em;
+}
+
+body.large-font .contact-link {
+    font-size: 1.1em;
+    padding: 12px 24px;
+}
+
+body.large-font .contact-instructions h3 {
+    font-size: 1.5em;
+}
+
+body.large-font .contact-instructions li {
+    font-size: 1.1em;
+}
+
+body.extra-large-font .contact-tab-btn {
+    font-size: 19px;
+    padding: 19px 29px;
+}
+
+body.extra-large-font .contact-info h3 {
+    font-size: 1.6em;
+}
+
+body.extra-large-font .contact-info p {
+    font-size: 1.2em;
+}
+
+body.extra-large-font .contact-link {
+    font-size: 1.2em;
+    padding: 14px 28px;
+}
+
+body.extra-large-font .contact-instructions h3 {
+    font-size: 1.7em;
+}
+
+body.extra-large-font .contact-instructions li {
+    font-size: 1.2em;
+}
