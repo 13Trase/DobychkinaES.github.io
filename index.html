@@ -17,17 +17,9 @@
             --light-color: #f9f9f9;
             --text-color: #444;
             --accent-color: #4a90e2;
-            --success-color: #2ecc71;
-            --error-color: #e74c3c;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Open Sans', sans-serif;
             color: var(--text-color);
@@ -58,25 +50,21 @@
             height: 100%;
             padding: 0 20px;
         }
-        .header-logo img {
-            height: 40px;
-        }
+        .header-logo img { height: 40px; }
         .nav-item-header {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
         .nav-item-header a {
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             transition: 0.3s;
+            white-space: nowrap;
         }
-        .nav-item-header a:hover {
-            color: #fff8e7;
-            text-decoration: underline;
-        }
+        .nav-item-header a:hover { color: #fff8e7; text-decoration: underline; }
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -86,10 +74,7 @@
             cursor: pointer;
         }
         /* Sections */
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid #eee;
-        }
+        section { padding: 60px 0; border-bottom: 1px solid #eee; }
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
@@ -218,8 +203,9 @@
         .card-content h3 {
             font-family: 'Playfair Display', serif;
             margin-bottom: 10px;
+            font-size: 18px;
         }
-        .card-content p { margin-bottom: 15px; flex-grow: 1; }
+        .card-content p { margin-bottom: 15px; flex-grow: 1; font-size: 14px; }
         .btn {
             display: inline-block;
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
@@ -259,8 +245,8 @@
         .tab-content.active { display: block; }
         .certificates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
         }
         .certificate-item {
             background: white;
@@ -272,7 +258,7 @@
         }
         .certificate-item:hover { transform: translateY(-5px); }
         .certificate-img {
-            height: 200px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -285,11 +271,11 @@
             object-fit: contain;
         }
         .certificate-info {
-            padding: 15px;
+            padding: 12px 15px;
             text-align: center;
         }
-        .certificate-info h3 { font-size: 16px; margin-bottom: 5px; }
-        .certificate-info p { color: var(--primary-color); font-weight: 600; font-size: 14px; }
+        .certificate-info h3 { font-size: 15px; margin-bottom: 5px; }
+        .certificate-info p { color: var(--primary-color); font-weight: 600; font-size: 13px; }
         /* Модалка для грамот */
         .certificate-modal {
             display: none;
@@ -529,7 +515,7 @@
         }
         .guide-columns {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
         .guide-section h4 {
@@ -543,6 +529,7 @@
             border-bottom: 1px solid #f0f0f0;
             padding-left: 20px;
             position: relative;
+            font-size: 14px;
         }
         .guide-section li:before {
             content: "•";
@@ -560,49 +547,99 @@
             border-left: 4px solid var(--accent-color);
         }
         .guide-tips ul { list-style: none; padding: 0; }
-        .guide-tips li { padding: 5px 0; padding-left: 25px; position: relative; }
+        .guide-tips li { padding: 5px 0; padding-left: 25px; position: relative; font-size: 14px; }
         .guide-tips li:before { content: "💡"; position: absolute; left: 0; }
-        /* Адаптив */
-        @media (max-width: 768px) {
-            .nav-item-header {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                padding: 20px;
-                gap: 10px;
-            }
-            .nav-item-header.active { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .main { flex-direction: column; text-align: center; }
-            .FIO { font-size: 32px; }
-            .about-content, .journey-content { flex-direction: column; }
-            .about-photo { order: -1; max-width: 250px; margin: 0 auto; }
-            .journey-carousel { min-width: unset; }
-            .mySwiper { height: 250px; }
-            .certificates-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 480px) {
-            .certificates-grid { grid-template-columns: 1fr; }
-            .FIO { font-size: 28px; }
-        }
-        .three-container {
-            width: 100%;
-            height: 200px;
-            margin: 20px 0;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #f0f0f0;
-        }
-        /* Скрытые iframe для формы */
-        #hidden-iframe { display: none; }
         .btn-loading { display: none; }
         .submit-btn.loading .btn-text { display: none; }
         .submit-btn.loading .btn-loading { display: inline; }
         .form-note { text-align: center; margin-top: 15px; font-size: 14px; color: #888; }
+        #hidden-iframe { display: none; }
+
+        /* ========== АДАПТИВНОСТЬ ========== */
+        @media (max-width: 992px) {
+            .main { flex-direction: column; text-align: center; }
+            .FIO { font-size: 38px; }
+            .citata { border-left: none; padding-left: 0; }
+            .about-content, .journey-content { flex-direction: column; }
+            .about-photo { order: -1; max-width: 300px; margin: 0 auto; }
+            .journey-carousel { min-width: unset; width: 100%; }
+            .mySwiper { height: 280px; }
+            .certificates-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            .header { height: 60px; }
+            .nav-item-header {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                padding: 20px;
+                gap: 12px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .nav-item-header.active { display: flex; }
+            .nav-item-header a {
+                font-size: 15px;
+                padding: 5px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+            .nav-item-header a:last-child { border-bottom: none; }
+            .mobile-menu-btn { display: block; }
+            section { padding: 40px 0; }
+            .section-title { font-size: 26px; }
+            .FIO { font-size: 32px; }
+            .mainphoto img { max-height: 300px; }
+            .mySwiper { height: 220px; }
+            .materials-grid, .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .certificate-img { height: 140px; }
+            .certificate-info h3 { font-size: 13px; }
+            .certificate-info p { font-size: 12px; }
+            .contact-form { padding: 20px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .guide-columns { grid-template-columns: 1fr; }
+            .guide-content { padding: 20px; }
+            .guide-header { padding: 15px 20px; }
+            .guide-header h3 { font-size: 18px; }
+            .modal-container { max-width: 95%; padding: 15px; }
+            .modal-content img { max-height: 60vh; }
+            .modal-close { font-size: 24px; top: 5px; right: 10px; }
+            .contact-tabs, .achievements-tabs { gap: 10px; }
+            .tab-btn, .contact-tab-btn { padding: 10px 16px; font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .FIO { font-size: 26px; }
+            .mainphoto img { max-height: 220px; }
+            .certificates-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .certificate-img { height: 110px; padding: 5px; }
+            .certificate-info { padding: 8px 10px; }
+            .certificate-info h3 { font-size: 12px; }
+            .certificate-info p { font-size: 11px; }
+            .container { padding: 0 12px; }
+            .news-item { padding: 18px; }
+            .news-title { font-size: 17px; }
+            .card-content { padding: 15px; }
+            .card-content h3 { font-size: 16px; }
+            .guide-modal-container { width: 98%; }
+            .guide-content { padding: 15px; }
+            .guide-section li { font-size: 13px; padding: 6px 0 6px 18px; }
+            .guide-tips li { font-size: 13px; }
+            .contact-card { padding: 18px; }
+        }
     </style>
 </head>
 <body>
@@ -725,23 +762,24 @@
                 <button class="tab-btn active" data-tab="certificates">Мои грамоты и сертификаты</button>
                 <button class="tab-btn" data-tab="students">Достижения учеников</button>
             </div>
+
+            <!-- Вкладка: Мои грамоты -->
             <div class="tab-content active" id="certificates">
                 <div class="certificates-grid">
-                    <!-- Примеры грамот (добавьте свои) -->
                     <div class="certificate-item" onclick="openModal('img/бп2.jpg','Благодарственное письмо','2025 год')">
-                        <div class="certificate-img"><img src="img/бп2.jpg" alt="Грамота"></div>
+                        <div class="certificate-img"><img src="img/бп2.jpg" alt="Благодарственное письмо"></div>
                         <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2025 год</p></div>
                     </div>
                     <div class="certificate-item" onclick="openModal('img/бп3.jpg','Благодарственное письмо','2023 год')">
-                        <div class="certificate-img"><img src="img/бп3.jpg" alt="Грамота"></div>
+                        <div class="certificate-img"><img src="img/бп3.jpg" alt="Благодарственное письмо"></div>
                         <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2023 год</p></div>
                     </div>
                     <div class="certificate-item" onclick="openModal('img/бп4.jpg','Благодарственное письмо','2025 год')">
-                        <div class="certificate-img"><img src="img/бп4.jpg" alt="Грамота"></div>
+                        <div class="certificate-img"><img src="img/бп4.jpg" alt="Благодарственное письмо"></div>
                         <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2025 год</p></div>
                     </div>
                     <div class="certificate-item" onclick="openModal('img/бп5.jpg','Благодарственное письмо','2025 год')">
-                        <div class="certificate-img"><img src="img/бп5.jpg" alt="Грамота"></div>
+                        <div class="certificate-img"><img src="img/бп5.jpg" alt="Благодарственное письмо"></div>
                         <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2025 год</p></div>
                     </div>
                     <div class="certificate-item" onclick="openModal('img/Грамота2бНаиш голоса.png','Грамота','2023 год')">
@@ -752,9 +790,66 @@
                         <div class="certificate-img"><img src="img/ГрамотаWEDO2024.png" alt="Грамота"></div>
                         <div class="certificate-info"><h3>Грамота</h3><p>2024 год</p></div>
                     </div>
-                    <!-- Добавьте остальные по аналогии -->
+                    <div class="certificate-item" onclick="openModal('img/Лучший читающий класс 2б2024.png','Диплом','2024 год')">
+                        <div class="certificate-img"><img src="img/Лучший читающий класс 2б2024.png" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2024 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/Подготовка призера 2024.png','Грамота','2024 год')">
+                        <div class="certificate-img"><img src="img/Подготовка призера 2024.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p>2024 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/Классгода4в2022.png','Диплом','2022 год')">
+                        <div class="certificate-img"><img src="img/Классгода4в2022.png" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2022 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/патриотической песнипамяти 1б2023.png','Диплом','2023 год')">
+                        <div class="certificate-img"><img src="img/патриотической песнипамяти 1б2023.png" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2023 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/ятагильчанин1б2023.png','Диплом','2023 год')">
+                        <div class="certificate-img"><img src="img/ятагильчанин1б2023.png" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2023 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/я тагильчанин1б2021.png','Диплом','2021 год')">
+                        <div class="certificate-img"><img src="img/я тагильчанин1б2021.png" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2021 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/ятагильчанин3в2021.png','Диплом','2021 год')">
+                        <div class="certificate-img"><img src="img/ятагильчанин3в2021.png" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2021 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/тагилсквозьгоды4в2021.png','Грамота','2021 год')">
+                        <div class="certificate-img"><img src="img/тагилсквозьгоды4в2021.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/сдал макулатуру1б2023.png','Диплом','2023 год')">
+                        <div class="certificate-img"><img src="img/сдал макулатуру1б2023.png" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2023 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/бп75вов2021.png','Благодарственное письмо','2021 год')">
+                        <div class="certificate-img"><img src="img/бп75вов2021.png" alt="Благодарственное письмо"></div>
+                        <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2021 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/грамотасдайкрышки4в2021.png','Грамота','2021 год')">
+                        <div class="certificate-img"><img src="img/грамотасдайкрышки4в2021.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/грамота видео ко дню учителя 4в 2021.png','Грамота','2021 год')">
+                        <div class="certificate-img"><img src="img/грамота видео ко дню учителя 4в 2021.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/всеросурокастрономии4в2021.png','Сертификат','2021 год')">
+                        <div class="certificate-img"><img src="img/всеросурокастрономии4в2021.png" alt="Сертификат"></div>
+                        <div class="certificate-info"><h3>Сертификат</h3><p>2021 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/фотоквест тагил сквозьгода4в2021.png','Грамота','2021 год')">
+                        <div class="certificate-img"><img src="img/фотоквест тагил сквозьгода4в2021.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Вкладка: Достижения учеников -->
             <div class="tab-content" id="students">
                 <div class="certificates-grid">
                     <div class="certificate-item" onclick="openModal('img/грамота 2б.png','Грамота','2024 год')">
@@ -768,6 +863,26 @@
                     <div class="certificate-item" onclick="openModal('img/диплом4.png','Диплом','2024 год')">
                         <div class="certificate-img"><img src="img/диплом4.png" alt="Диплом"></div>
                         <div class="certificate-info"><h3>Диплом</h3><p>2024 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/Грамота5.png','Грамота','2025 год')">
+                        <div class="certificate-img"><img src="img/Грамота5.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p>2025 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/диплом нежные слова.jpg','Диплом','2025 год')">
+                        <div class="certificate-img"><img src="img/диплом нежные слова.jpg" alt="Диплом"></div>
+                        <div class="certificate-info"><h3>Диплом</h3><p>2025 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/фуфсофятагильчанин2023.png','Грамота','2023 год')">
+                        <div class="certificate-img"><img src="img/фуфсофятагильчанин2023.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p>2023 год</p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/бородкамилятагильчанин-.png','Грамота','')">
+                        <div class="certificate-img"><img src="img/бородкамилятагильчанин-.png" alt="Грамота"></div>
+                        <div class="certificate-info"><h3>Грамота</h3><p></p></div>
+                    </div>
+                    <div class="certificate-item" onclick="openModal('img/сертификатКузьминыхКонстантин4в2021.png','Сертификат','2021 год')">
+                        <div class="certificate-img"><img src="img/сертификатКузьминыхКонстантин4в2021.png" alt="Сертификат"></div>
+                        <div class="certificate-info"><h3>Сертификат</h3><p>2021 год</p></div>
                     </div>
                 </div>
             </div>
@@ -1002,8 +1117,6 @@
     document.getElementById('mobileMenuToggle').addEventListener('click', function() {
         document.getElementById('mainNav').classList.toggle('active');
     });
-
-    // Закрываем меню при клике на ссылку
     document.querySelectorAll('.nav-item-header a').forEach(link => {
         link.addEventListener('click', () => {
             document.getElementById('mainNav').classList.remove('active');
@@ -1023,9 +1136,8 @@
         btn.addEventListener('click', function() {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            const target = this.dataset.tab;
             document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-            document.getElementById(target).classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
         });
     });
 
@@ -1034,9 +1146,8 @@
         btn.addEventListener('click', function() {
             document.querySelectorAll('.contact-tab-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            const target = this.dataset.tab;
             document.querySelectorAll('.contact-tab-content').forEach(tc => tc.classList.remove('active'));
-            document.getElementById(target).classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
         });
     });
 
@@ -1050,7 +1161,6 @@
     function closeModal() {
         document.getElementById('certificateModal').classList.remove('show');
     }
-    // Закрытие по клику вне контента
     document.getElementById('certificateModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
@@ -1059,21 +1169,21 @@
     function toggleGuide() {
         document.getElementById('guideModal').classList.toggle('show');
     }
-    // Закрытие по клику вне контента
     document.getElementById('guideModal').addEventListener('click', function(e) {
         if (e.target === this) toggleGuide();
     });
 
     // Форма
     document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+        e.preventDefault();
         const btn = this.querySelector('.submit-btn');
         btn.classList.add('loading');
         btn.disabled = true;
-        // Через 3 сек снимаем (имитация отправки)
         setTimeout(() => {
             btn.classList.remove('loading');
             btn.disabled = false;
             alert('Сообщение отправлено! (демонстрационный режим)');
+            this.reset();
         }, 3000);
     });
 </script>
