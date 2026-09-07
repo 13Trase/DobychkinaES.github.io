@@ -1,1191 +1,215 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Добычкина Е.С. - Учитель начальных классов</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <style>
-        :root {
-            --primary-color: #ff7e5f;
-            --secondary-color: #feb47b;
-            --dark-color: #333;
-            --light-color: #f9f9f9;
-            --text-color: #444;
-            --accent-color: #4a90e2;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text-color);
-            background-color: var(--light-color);
-            line-height: 1.6;
-            font-size: 16px;
-            padding-top: 70px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            height: 70px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .header-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-            padding: 0 20px;
-        }
-        .header-logo img { height: 40px; }
-        .nav-item-header {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .nav-item-header a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .nav-item-header a:hover { color: #fff8e7; text-decoration: underline; }
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        /* Sections */
-        section { padding: 60px 0; border-bottom: 1px solid #eee; }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: var(--dark-color);
-            text-align: center;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        /* Главная */
-        .main {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            min-height: 70vh;
-            padding: 40px 0;
-        }
-        .maintxt { flex: 1; }
-        .FIO {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--dark-color);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-        .citata {
-            font-style: italic;
-            font-size: 18px;
-            color: var(--primary-color);
-            border-left: 3px solid var(--primary-color);
-            padding-left: 15px;
-            margin-bottom: 20px;
-        }
-        .mainphoto { flex: 1; text-align: center; }
-        .mainphoto img {
-            max-width: 100%;
-            max-height: 450px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-        /* Обо мне */
-        .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-        .about-text { flex: 1; }
-        .about-text p { margin-bottom: 15px; }
-        .about-photo { flex: 1; }
-        .about-photo img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        /* Мой путь */
-        .journey-content {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-        .journey-text { flex: 1; }
-        .journey-text p { margin-bottom: 15px; }
-        .journey-carousel { flex: 1; min-width: 300px; }
-        .mySwiper {
-            width: 100%;
-            height: 350px;
-            border-radius: 12px;
-        }
-        .swiper-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .swiper-button-next, .swiper-button-prev {
-            color: #ff7e5f;
-            background: rgba(255,255,255,0.8);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-        .swiper-button-next:after, .swiper-button-prev:after { font-size: 20px; }
-        .swiper-pagination-bullet-active { background: #ff7e5f; }
-        /* Сетки */
-        .materials-grid, .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        .material-card, .resource-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-        .material-card:hover, .resource-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-        .card-img {
-            height: 180px;
-            overflow: hidden;
-        }
-        .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        .card-content h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        .card-content p { margin-bottom: 15px; flex-grow: 1; font-size: 14px; }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-            text-align: center;
-        }
-        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
-        /* Достижения */
-        .achievements-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .tab-btn {
-            background: none;
-            border: none;
-            padding: 12px 25px;
-            font-weight: 600;
-            color: var(--text-color);
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: 0.3s;
-            font-size: 16px;
-        }
-        .tab-btn.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .certificate-item {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .certificate-item:hover { transform: translateY(-5px); }
-        .certificate-img {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f8f9fa;
-            padding: 10px;
-        }
-        .certificate-img img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .certificate-info {
-            padding: 12px 15px;
-            text-align: center;
-        }
-        .certificate-info h3 { font-size: 15px; margin-bottom: 5px; }
-        .certificate-info p { color: var(--primary-color); font-weight: 600; font-size: 13px; }
-        /* Модалка для грамот */
-        .certificate-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-        .certificate-modal.show { display: flex; }
-        .modal-container {
-            background: white;
-            border-radius: 12px;
-            max-width: 90%;
-            max-height: 90%;
-            padding: 20px;
-            position: relative;
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px; right: 15px;
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #333;
-        }
-        .modal-content img {
-            max-width: 100%;
-            max-height: 70vh;
-            display: block;
-            margin: 0 auto;
-        }
-        .modal-info { text-align: center; margin-top: 15px; }
-        .modal-info h3 { font-family: 'Playfair Display', serif; }
-        .modal-info p { color: var(--primary-color); font-weight: 600; }
-        /* Новости */
-        .news-list { max-width: 800px; margin: 0 auto; }
-        .news-item {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        .news-date { color: var(--primary-color); font-weight: 600; font-size: 14px; margin-bottom: 8px; }
-        .news-title { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 10px; }
-        /* Контакты */
-        .contact-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .contact-tab-btn {
-            background: none;
-            border: none;
-            padding: 12px 25px;
-            font-weight: 600;
-            color: var(--text-color);
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: 0.3s;
-        }
-        .contact-tab-btn.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-        }
-        .contact-tab-content { display: none; }
-        .contact-tab-content.active { display: block; }
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 16px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .form-group textarea { min-height: 120px; resize: vertical; }
-        .submit-btn {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .submit-btn:hover { opacity: 0.9; }
-        .direct-contact { max-width: 700px; margin: 0 auto; }
-        .contact-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        .contact-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-        }
-        .contact-link {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .contact-link:hover { opacity: 0.85; }
-        .contact-instructions {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
-        }
-        .contact-instructions ul { list-style: none; padding: 0; }
-        .contact-instructions li { padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
-        .contact-instructions li:last-child { border-bottom: none; }
-        .contact-instructions strong { color: var(--primary-color); }
-        /* Футер */
-        footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 40px 0 20px;
-        }
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        .footer-section h4 { margin-bottom: 15px; font-family: 'Playfair Display', serif; }
-        .footer-section p, .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .footer-section a:hover { color: var(--primary-color); }
-        .footer-bottom {
-            border-top: 1px solid #555;
-            padding-top: 20px;
-            text-align: center;
-        }
-        .footer-bottom small { color: #999; }
-        .footer-help-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            width: 100%;
-            font-size: 15px;
-        }
-        .footer-help-btn:hover { opacity: 0.85; }
-        /* Модалка инструкции */
-        .guide-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 10001;
-            align-items: center;
-            justify-content: center;
-        }
-        .guide-modal.show { display: flex; }
-        .guide-modal-container {
-            background: white;
-            border-radius: 12px;
-            max-width: 900px;
-            width: 90%;
-            max-height: 85vh;
-            overflow: hidden;
-        }
-        .guide-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .guide-header h3 { font-family: 'Playfair Display', serif; }
-        .guide-close {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .guide-close:hover { background: rgba(255,255,255,0.3); }
-        .guide-content {
-            padding: 30px;
-            max-height: calc(85vh - 80px);
-            overflow-y: auto;
-        }
-        .guide-columns {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-        .guide-section h4 {
-            color: var(--dark-color);
-            margin-bottom: 15px;
-            font-family: 'Playfair Display', serif;
-        }
-        .guide-section ul { list-style: none; padding: 0; }
-        .guide-section li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            padding-left: 20px;
-            position: relative;
-            font-size: 14px;
-        }
-        .guide-section li:before {
-            content: "•";
-            color: var(--primary-color);
-            position: absolute;
-            left: 4px;
-            font-weight: bold;
-        }
-        .guide-section strong { color: var(--primary-color); }
-        .guide-tips {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            border-left: 4px solid var(--accent-color);
-        }
-        .guide-tips ul { list-style: none; padding: 0; }
-        .guide-tips li { padding: 5px 0; padding-left: 25px; position: relative; font-size: 14px; }
-        .guide-tips li:before { content: "💡"; position: absolute; left: 0; }
-        .btn-loading { display: none; }
-        .submit-btn.loading .btn-text { display: none; }
-        .submit-btn.loading .btn-loading { display: inline; }
-        .form-note { text-align: center; margin-top: 15px; font-size: 14px; color: #888; }
-        #hidden-iframe { display: none; }
-
-        /* ========== АДАПТИВНОСТЬ ========== */
-        @media (max-width: 992px) {
-            .main { flex-direction: column; text-align: center; }
-            .FIO { font-size: 38px; }
-            .citata { border-left: none; padding-left: 0; }
-            .about-content, .journey-content { flex-direction: column; }
-            .about-photo { order: -1; max-width: 300px; margin: 0 auto; }
-            .journey-carousel { min-width: unset; width: 100%; }
-            .mySwiper { height: 280px; }
-            .certificates-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-        }
-
-        @media (max-width: 768px) {
-            body { padding-top: 60px; }
-            .header { height: 60px; }
-            .nav-item-header {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                padding: 20px;
-                gap: 12px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-            .nav-item-header.active { display: flex; }
-            .nav-item-header a {
-                font-size: 15px;
-                padding: 5px 0;
-                border-bottom: 1px solid rgba(255,255,255,0.2);
-            }
-            .nav-item-header a:last-child { border-bottom: none; }
-            .mobile-menu-btn { display: block; }
-            section { padding: 40px 0; }
-            .section-title { font-size: 26px; }
-            .FIO { font-size: 32px; }
-            .mainphoto img { max-height: 300px; }
-            .mySwiper { height: 220px; }
-            .materials-grid, .resources-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .certificates-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            .certificate-img { height: 140px; }
-            .certificate-info h3 { font-size: 13px; }
-            .certificate-info p { font-size: 12px; }
-            .contact-form { padding: 20px; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-            .guide-columns { grid-template-columns: 1fr; }
-            .guide-content { padding: 20px; }
-            .guide-header { padding: 15px 20px; }
-            .guide-header h3 { font-size: 18px; }
-            .modal-container { max-width: 95%; padding: 15px; }
-            .modal-content img { max-height: 60vh; }
-            .modal-close { font-size: 24px; top: 5px; right: 10px; }
-            .contact-tabs, .achievements-tabs { gap: 10px; }
-            .tab-btn, .contact-tab-btn { padding: 10px 16px; font-size: 14px; }
-        }
-
-        @media (max-width: 480px) {
-            .FIO { font-size: 26px; }
-            .mainphoto img { max-height: 220px; }
-            .certificates-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .certificate-img { height: 110px; padding: 5px; }
-            .certificate-info { padding: 8px 10px; }
-            .certificate-info h3 { font-size: 12px; }
-            .certificate-info p { font-size: 11px; }
-            .container { padding: 0 12px; }
-            .news-item { padding: 18px; }
-            .news-title { font-size: 17px; }
-            .card-content { padding: 15px; }
-            .card-content h3 { font-size: 16px; }
-            .guide-modal-container { width: 98%; }
-            .guide-content { padding: 15px; }
-            .guide-section li { font-size: 13px; padding: 6px 0 6px 18px; }
-            .guide-tips li { font-size: 13px; }
-            .contact-card { padding: 18px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#254d40">
+<meta name="description" content="Личный сайт Добычкиной Елены Сергеевны — учителя начальных классов. Педагогический опыт, методические материалы, достижения и обратная связь.">
+<title>Елена Добычкина — учитель начальных классов</title>
+<style>
+/* Самостоятельный HTML: без CDN, внешних шрифтов и библиотек.
+   Положите рядом исходные папки img и content. Светлая тема задана намеренно.
+   Цвета и размеры удобно менять в этом блоке. */
+:root{color-scheme:light;--paper:#f8f7f2;--white:#fff;--ink:#233c32;--muted:#616d64;--green:#254d40;--sage:#e9eee4;--line:#d9dfd4;--gold:#eedbb1;--radius:12px;--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:108px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,textarea,select{font:inherit}button,a,input,textarea,summary,select{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer;color:inherit}a{color:inherit;text-underline-offset:5px}img{display:block;max-width:100%}button{border:0}h1,h2,h3,p,figure,blockquote{margin:0}h1,h2,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}h2{font-size:clamp(32px,4vw,46px);line-height:1.16;letter-spacing:-1.1px}h3{font-size:20px;line-height:1.35;font-weight:600}p+p{margin-top:16px}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #9b631e;outline-offset:5px}[hidden]{display:none!important}::selection{background:var(--gold);color:var(--ink)}.container{width:min(var(--max),calc(100% - 64px));margin:auto}.skip{position:fixed;top:-100px;left:16px;background:white;padding:12px 20px;z-index:100}.skip:focus{top:12px}.eyebrow{font-size:14px;letter-spacing:1.8px;text-transform:uppercase;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:22px}.eyebrow::before{content:"";width:24px;height:1px;background:currentColor}.muted{color:var(--muted)}.small{font-size:14px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:48px;padding:12px 22px;border:1px solid var(--green);border-radius:6px;background:var(--green);color:white;text-decoration:none;font-weight:600;transition:background .2s,transform .2s}.btn:hover{background:#17392d;transform:translateY(-2px)}.btn.secondary{background:transparent;color:var(--green);border-color:var(--line)}.btn.secondary:hover{background:var(--sage)}.arrow{font-size:22px;line-height:1}.link{display:inline-flex;align-items:center;gap:20px;min-height:44px;font-weight:600}.actions{display:flex;flex-wrap:wrap;gap:12px}.section{padding:88px 0;scroll-margin-top:16px}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:40px}.section-heading p{max-width:340px;color:var(--muted)}.section-heading .eyebrow{margin-bottom:12px}.rule{border-top:1px solid var(--line)}
+/* Шапка */
+.header{position:sticky;top:0;z-index:30;background:rgba(248,247,242,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.header-inner{min-height:88px;display:flex;align-items:center;gap:32px;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}.brand-mark{height:44px;width:44px;display:grid;place-items:center;border:1px solid var(--green);border-radius:50%;font:21px Georgia,serif}.brand-name{font-size:16px;font-weight:600;line-height:1.4}.brand-name small{display:block;font-size:14px;color:var(--muted);font-weight:400}.nav{display:flex;align-items:center;gap:20px}.nav a{font-size:14px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;border-bottom:1px solid transparent}.nav a:hover,.nav a[aria-current]{border-color:var(--green)}.nav .nav-contact{border:1px solid var(--line);border-radius:6px;padding:0 16px}.menu-toggle{display:none;width:48px;height:48px;border:1px solid var(--line);background:transparent;border-radius:6px;font-size:24px}
+/* Первый экран */
+.hero{padding:64px 0 0}.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center}.hero h1{font-size:clamp(44px,5.2vw,70px);line-height:1.04;letter-spacing:-2.3px;margin-bottom:24px}.hero h1 span{display:block;color:#5b745d;font-style:italic}.hero-copy{max-width:490px;color:var(--muted);font-size:18px;line-height:1.65;margin-bottom:32px}.hero .eyebrow{font-size:13px;letter-spacing:1.6px}.portrait{position:relative;background:#e4e9de;border-radius:160px 160px 12px 12px;isolation:isolate;aspect-ratio:4/4.6;overflow:hidden;min-width:0}.portrait>img{width:100%;height:100%;object-fit:cover;object-position:center 25%;position:relative;z-index:1}.portrait-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;text-align:center}.portrait-fallback .monogram{font:italic clamp(100px,14vw,190px)/1 Georgia,serif;color:#627b60;letter-spacing:-16px;padding-right:16px}.portrait-fallback .portrait-note{letter-spacing:2px;font-size:14px;text-transform:uppercase;margin-top:28px;color:#52634e}.portrait-caption{position:absolute;z-index:2;bottom:20px;left:20px;right:20px;padding:18px 20px;border-radius:8px;background:rgba(248,247,242,.94);display:flex;gap:16px;align-items:center;backdrop-filter:blur(8px)}.portrait-caption .symbol{font-size:30px;color:#677c59}.portrait-caption p{font-size:14px;line-height:1.5}.portrait-caption strong{font-weight:600;display:block;font-size:16px}.hero-bottom{display:grid;grid-template-columns:1fr 1fr 1.2fr;margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;gap:32px}.stat{display:flex;gap:18px;align-items:center}.stat-number{font:42px/1 Georgia,serif}.stat p{font-size:14px;line-height:1.5;color:var(--muted)}.hero-bottom .statement{font:italic 20px/1.4 Georgia,serif;border-left:1px solid var(--line);padding-left:32px;align-self:center}
+/* Обо мне и путь */
+.about-layout{display:grid;grid-template-columns:.85fr 1.3fr;gap:80px;align-items:start}.about-aside{position:relative}.about-photo{height:240px;object-fit:cover;width:100%;border-radius:var(--radius);margin-bottom:24px}.about-quote{padding:28px 0;border-top:1px solid var(--line);font:italic 25px/1.4 Georgia,serif}.about-body>p{color:var(--muted)}.about-body .lead{font-size:21px;color:var(--ink);line-height:1.55}.education{margin-top:32px;border-top:1px solid var(--line)}.education article{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}.education .num{font-size:14px;color:var(--muted);padding-top:3px}.education h3{font-size:17px;margin-bottom:5px}.education p{font-size:14px;color:var(--muted)}.journey{background:var(--green);color:#f8f7f2}.journey .eyebrow,.journey .muted{color:#c4d1c8}.journey-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}.principle{display:grid;grid-template-columns:32px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid #557367}.principle:first-child{padding-top:0}.principle-number{font:italic 20px Georgia,serif;color:#d4dfc0}.principle h3{margin-bottom:8px}.principle p{font-size:15px;color:#d1dcd5}.carousel{margin-top:8px}.slide-image{height:302px;width:100%;object-fit:cover;border-radius:var(--radius);background:#3d5f4f}.slide-visual{height:302px;background:#3d5f4f;border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;justify-content:space-between}.slide-visual .big-index{font:96px/1 Georgia,serif;color:#baccaa}.slide-visual p{font:italic 26px/1.2 Georgia,serif}.slide-caption{margin-top:22px;display:flex;justify-content:space-between;gap:16px;align-items:center}.slide-caption p{font-size:14px;color:#c4d1c8}.slider-buttons{display:flex;gap:8px}.icon-btn{width:46px;height:46px;background:transparent;border:1px solid var(--line);border-radius:50%;font-size:23px;display:grid;place-items:center}.journey .icon-btn{border-color:#7d9688;color:white}.journey .icon-btn:hover{background:#3d5f4f}
+/* Материалы */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.material{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}.material:hover{transform:translateY(-4px);box-shadow:0 4px 12px #233c320b}.material-cover{height:196px;position:relative;background:var(--sage);overflow:hidden}.material-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#f0f2eb;z-index:1}.cover-type{height:100%;padding:24px;display:flex;flex-direction:column;justify-content:space-between}.cover-type strong{font:48px/1 Georgia,serif}.cover-type small{font-size:14px}.material:nth-child(2) .material-cover{background:#f2e9d5}.material:nth-child(3) .material-cover{background:#e5eaf0}.material-body{padding:24px;display:flex;flex:1;flex-direction:column}.material-body .tag{font-size:14px;color:var(--muted);margin-bottom:12px}.material-body h3{margin-bottom:12px}.material-body p{font-size:15px;color:var(--muted);margin-bottom:24px}.material-body a{margin-top:auto;border-top:1px solid var(--line);padding-top:14px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;min-height:48px;font-weight:600}.material-body a:hover{text-decoration:underline}
+/* Достижения */
+.achievements{background:#eeefe7}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}.tabs{display:flex;flex-wrap:wrap;gap:8px}.tab{min-height:46px;background:transparent;border:1px solid #bcc8b6;border-radius:6px;padding:10px 16px;font-size:14px}.tab[aria-selected="true"]{background:var(--green);border-color:var(--green);color:white}.select-wrap{display:flex;align-items:center;gap:12px;font-size:14px}.select-wrap select{border:1px solid #aebba8;border-radius:6px;background:transparent;padding:10px;min-height:46px;color:var(--ink)}.cert-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.cert{display:flex;flex-direction:column;text-align:left;padding:0;background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .2s}.cert:hover{transform:translateY(-3px)}.cert-preview{height:172px;position:relative;width:100%;display:grid;place-items:center;background:#e4e8dd;overflow:hidden}.cert-preview img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0;padding:14px;background:#e4e8dd}.cert-empty{font:italic 48px Georgia,serif;color:#738269}.cert-body{padding:18px;display:flex;flex-direction:column;flex:1;gap:8px}.cert-body strong{font-size:15px;line-height:1.4;font-weight:600}.cert-body span{color:var(--muted);font-size:14px}.cert-status{font-size:14px;margin-top:20px;color:var(--muted)}.more-row{text-align:center;margin-top:24px}.empty{padding:32px;border:1px dashed #aab6a2;border-radius:8px}.archive-note{font-size:14px;color:var(--muted);margin-top:20px}
+/* Ресурсы и новости */
+.resources-list{border-top:1px solid var(--line)}.resource{display:grid;grid-template-columns:48px 1fr 1.3fr 40px;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);text-decoration:none}.resource:hover h3{text-decoration:underline;text-underline-offset:6px}.resource .resource-index{font:italic 24px Georgia,serif;color:var(--muted)}.resource p{font-size:15px;color:var(--muted)}.resource .arrow{text-align:right}.resource-logo{width:44px;height:44px;object-fit:contain}.resource-logo-wrap .resource-index{display:block}.resource-logo-wrap:has(img:not([hidden])) .resource-index{display:none}.news{background:#fff}.news-layout{display:grid;grid-template-columns:.75fr 1.5fr;gap:80px}.news-layout .eyebrow{margin-bottom:16px}.news-layout h2{margin-bottom:20px}.news-layout aside p{color:var(--muted);max-width:260px}.news-entry{padding:24px 0;border-top:1px solid var(--line)}.news-entry:last-child{border-bottom:1px solid var(--line)}.news-entry time{display:block;font-size:14px;color:var(--muted);margin-bottom:12px}.news-entry h3{font-size:20px;max-width:630px}.news-entry summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:44px}.news-entry summary::-webkit-details-marker{display:none}.news-entry summary::after{content:"+";font-size:26px;font-weight:300;flex-shrink:0}.news-entry[open] summary::after{content:"−"}.news-entry .news-text{padding:20px 44px 0 0;color:var(--muted);font-size:15px}
+/* Контакты */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px}.contact-copy h2{margin-bottom:24px}.contact-copy>p{color:var(--muted);max-width:390px}.contact-links{margin-top:32px;display:flex;flex-direction:column;gap:12px;align-items:start}.contact-links a{min-height:44px;font-size:18px;overflow-wrap:anywhere}.contact-hours{margin-top:28px!important;font-size:14px}.contact-form{background:white;border:1px solid var(--line);padding:32px;border-radius:var(--radius)}.contact-form h3{margin-bottom:8px}.contact-form>p{font-size:14px;color:var(--muted);margin-bottom:24px}.field{margin-bottom:18px}.field label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}input,textarea{width:100%;padding:12px 14px;border:1px solid #9daa9d;border-radius:6px;background:#fff;color:var(--ink)}textarea{min-height:118px;resize:vertical}input::placeholder,textarea::placeholder{color:#767c76}.contact-form .btn{width:100%}.form-note{font-size:14px;color:var(--muted);margin-top:16px}.form-status{margin-top:16px;font-size:14px;border-left:3px solid var(--green);padding-left:12px}.footer{background:var(--green);color:var(--paper);padding:40px 0 24px}.footer-top{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:28px}.footer .brand-mark{border-color:#9bad9c}.footer .brand-name small{color:#c4d1c8}.footer button{color:var(--paper);background:transparent;text-decoration:underline;text-underline-offset:5px;min-height:44px;padding:8px}.footer-bottom{border-top:1px solid #6c8477;padding-top:20px;display:flex;justify-content:space-between;gap:32px;color:#c4d1c8;font-size:14px}.footer-bottom p{max-width:570px;margin:0}.back-top{min-height:44px;display:inline-flex;align-items:center;gap:12px;text-decoration:none}
+/* Диалоги: Esc, фокус и блокировка фона поддерживаются нативно */
+dialog{border:1px solid var(--line);border-radius:12px;padding:28px;background:var(--paper);color:var(--ink);width:min(740px,calc(100% - 32px));max-height:90dvh;overflow:auto}dialog::backdrop{background:#12241dde;backdrop-filter:blur(5px)}.dialog-header{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:24px}.dialog-header h2{font:26px/1.25 Georgia,serif;letter-spacing:0}.dialog-header .icon-btn{flex-shrink:0}.modal-image{max-height:61dvh;width:auto;max-width:100%;margin:auto;object-fit:contain}.modal-meta{font-size:14px;color:var(--muted);margin-bottom:20px}.modal-empty{padding:48px 24px;text-align:center;background:var(--sage);border-radius:8px}.modal-empty p+p{font-size:14px;color:var(--muted)}.guide-grid{display:grid;gap:24px}.guide-grid h3{font-size:18px;margin-bottom:8px}.guide-grid p{font-size:15px;color:var(--muted)}body.modal-open{overflow:hidden}
+@media(min-width:1280px){.hero{padding-top:72px}}
+@media(max-width:1100px){.header-inner{gap:16px}.nav{gap:12px}.brand-name{font-size:14px}.brand-name small{font-size:13px}.nav a{font-size:13px}.hero-grid{gap:40px}.about-layout,.news-layout,.contact-layout{gap:48px}.journey-layout{gap:40px}}
+@media(max-width:940px){.menu-toggle{display:grid;place-items:center}.header-inner{min-height:76px}.nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--paper);padding:20px 32px 28px;box-shadow:0 10px 16px #12241d0d;border-bottom:1px solid var(--line);grid-template-columns:1fr 1fr;gap:8px 24px;max-height:calc(100dvh - 76px);overflow:auto}.nav.open{display:grid}.nav a{font-size:16px}.nav .nav-contact{justify-content:center}.hero-grid{gap:32px}.hero h1{font-size:50px}.hero-copy{font-size:16px}.hero .eyebrow{font-size:12px;letter-spacing:1px}.hero .actions{flex-direction:column;align-items:start}.hero-bottom{grid-template-columns:1fr 1fr}.hero-bottom .statement{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);padding:20px 0 0}.about-layout{grid-template-columns:.85fr 1.2fr;gap:32px}.section{padding:64px 0}.section-heading{align-items:start;flex-direction:column;gap:20px}.section-heading p{max-width:570px}.cards{gap:16px}.material-body{padding:20px}.material-body h3{font-size:18px}.cert-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.resource{grid-template-columns:40px 1fr 1fr 24px;gap:20px}.contact-layout{gap:32px}.contact-form{padding:24px}.news-layout{gap:40px}.journey-layout{gap:32px}.slide-image,.slide-visual{height:280px}.slide-visual p{font-size:23px}}
+@media(max-width:680px){html{scroll-padding-top:90px}.container{width:calc(100% - 40px)}.header-inner{min-height:72px}.nav{top:72px;padding:16px 20px 24px}.brand-name{font-size:15px}.brand-name small{font-size:13px}.brand-mark{width:40px;height:40px}.hero{padding-top:40px}.hero-grid{grid-template-columns:1fr;gap:32px}.hero h1{font-size:clamp(44px,10vw,62px);letter-spacing:-1.7px;margin-bottom:22px}.hero .eyebrow{font-size:12px;letter-spacing:1.1px;margin-bottom:24px}.hero-copy{font-size:16px;margin-bottom:24px;max-width:100%}.hero .actions{flex-direction:row;align-items:stretch;gap:10px}.btn{padding:11px 17px;gap:16px;font-size:14px}.portrait{aspect-ratio:1.08;border-radius:120px 120px 12px 12px;max-width:430px;width:100%;margin:auto}.portrait-fallback .monogram{font-size:130px}.portrait-fallback{padding-bottom:74px}.portrait-fallback .portrait-note{margin-top:12px;font-size:12px}.portrait-caption{padding:14px 16px;left:14px;right:14px;bottom:14px}.portrait-caption strong{font-size:15px}.portrait-caption p{font-size:13px}.hero-bottom{gap:20px;margin-top:32px;padding:24px 0}.stat{gap:12px}.stat-number{font-size:36px}.stat p{font-size:13px}.hero-bottom .statement{font-size:20px}.section{padding:56px 0}h2{font-size:35px}.eyebrow{font-size:12px;letter-spacing:1.5px;margin-bottom:16px}.about-layout,.journey-layout,.news-layout,.contact-layout{grid-template-columns:1fr;gap:32px}.about-quote{font-size:24px;margin-top:24px;padding-bottom:0}.about-photo{height:240px}.about-body .lead{font-size:20px}.about-body>p{font-size:15px}.section-heading{margin-bottom:28px}.journey .section-heading{margin-bottom:32px}.principle h3{font-size:18px}.cards{grid-template-columns:1fr;gap:20px}.material-cover{height:180px}.material-body h3{font-size:21px}.cover-type strong{font-size:52px}.cert-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.cert-preview{height:140px}.cert-body{padding:14px}.cert-body strong{font-size:14px}.cert-body span{font-size:13px}.tabs{width:100%;display:grid;grid-template-columns:1fr 1fr}.tab{font-size:13px;padding:10px}.toolbar{gap:16px}.select-wrap{width:100%;justify-content:space-between}.select-wrap select{min-width:140px}.resource{grid-template-columns:36px 1fr 24px;gap:12px;padding:22px 0}.resource p{grid-column:2;grid-row:2;font-size:14px}.resource .arrow{grid-column:3;grid-row:1/3}.resource h3{font-size:18px}.resource-logo{width:32px;height:32px}.news-layout aside p{max-width:100%}.news-entry h3{font-size:18px}.news-entry .news-text{padding-right:0}.contact-form{padding:24px 20px}.contact-copy h2{max-width:300px}.footer-top,.footer-bottom{flex-direction:column;align-items:start;gap:20px}.footer .brand-name{font-size:15px}.footer-bottom{font-size:13px}.dialog-header h2{font-size:22px}dialog{padding:20px}.dialog-header{gap:12px}.modal-empty{padding:32px 16px}}
+@media(max-width:380px){.hero-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{flex-direction:column;align-items:flex-start;gap:8px}.stat p{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+.menu-toggle{position:relative}.menu-toggle::before{content:"";width:18px;height:2px;background:currentColor;box-shadow:0 -6px currentColor,0 6px currentColor}.menu-toggle[aria-expanded="true"]::before{transform:rotate(45deg);box-shadow:none}.menu-toggle[aria-expanded="true"]::after{content:"";position:absolute;width:18px;height:2px;background:currentColor;transform:rotate(-45deg)}
+</style>
 </head>
 <body>
-
-<!-- Шапка -->
+<a class="skip" href="#main">Перейти к содержимому</a>
 <header class="header">
-    <div class="header-line container">
-        <div class="header-logo">
-            <a href="#home"><img src="img/logo56.png" alt="Логотип"></a>
-        </div>
-        <nav class="nav-item-header" id="mainNav">
-            <a href="#home">ГЛАВНАЯ</a>
-            <a href="#about">ОБО МНЕ</a>
-            <a href="#journey">МОЙ ПУТЬ</a>
-            <a href="#methodology">МЕТОДИЧЕСКАЯ КОПИЛКА</a>
-            <a href="#achievements">ДОСТИЖЕНИЯ</a>
-            <a href="#resources">РЕСУРСЫ</a>
-            <a href="#news">НОВОСТИ</a>
-            <a href="#contact">ОБРАТНАЯ СВЯЗЬ</a>
-        </nav>
-        <button class="mobile-menu-btn" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
-    </div>
+ <div class="container header-inner">
+  <a class="brand" href="#home" aria-label="Елена Добычкина — главная"><span class="brand-mark" aria-hidden="true">ЕД</span><span class="brand-name">Елена Добычкина<small>Учитель начальных классов</small></span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-controls="mainNav" aria-expanded="false"></button>
+  <nav class="nav" id="mainNav" aria-label="Основная навигация">
+   <a href="#about">Обо мне</a><a href="#journey">Мой путь</a><a href="#methodology">Материалы</a><a href="#achievements">Достижения</a><a href="#resources">Ресурсы</a><a href="#news">Новости</a><a class="nav-contact" href="#contact">Связаться ↗</a>
+  </nav>
+ </div>
 </header>
-
-<main>
-    <!-- Главная -->
-    <section id="home">
-        <div class="container main">
-            <div class="maintxt">
-                <h1 class="FIO">Добычкина<br>Елена<br>Сергеевна</h1>
-                <div class="citata">"Моя миссия — вдохновлять и поддерживать каждого ученика на пути к успеху, открывая перед ним двери в мир знаний и творчества."</div>
-            </div>
-            <div class="mainphoto">
-                <img src="img/mmmm.jpg" alt="Добычкина Елена Сергеевна">
-            </div>
-        </div>
-    </section>
-
-    <!-- Обо мне -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">Обо мне</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Мой путь в профессию начался с искренней любви к детям и желания помогать им раскрывать свой потенциал. Каждый день я прихожу в школу с уверенностью, что могу сделать мир моих учеников чуть ярче и интереснее.</p>
-                    <p>Я работаю учителем уже более 8 лет, имею 1 квалификационную категорию.</p>
-                    <p>Закончила Нижнетагильский педагогический колледж по специальности "Дошкольное образование." Прошла переподготовку в АНО ДПО "Волгоградская гуманитарная академия профессиональной подготовки специалистов социальной сферы" по специальности "Учитель начальных классов". А в данное время получаю высшее образование в Нижнетагильском государственном социально-педагогическом институте (филиале) ФГАОУ ВО "Уральского государственного педагогического университета" по специальности "Практическая психология".</p>
-                </div>
-                <div class="about-photo">
-                    <img src="img/about-photo.jpg" alt="Добычкина Елена Сергеевна в классе">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Мой путь -->
-    <section id="journey">
-        <div class="container">
-            <h2 class="section-title">Мой путь</h2>
-            <div class="journey-content">
-                <div class="journey-text">
-                    <p>Моя работа заключается не только в передаче знаний, но и в создании атмосферы доверия и взаимопонимания между мной и моими учениками. Я убеждена, что каждый ребенок обладает уникальными талантами, и моя задача — помочь ему раскрыть эти таланты и поверить в себя. Именно поэтому я постоянно ищу новые подходы и методы, которые помогут сделать процесс обучения увлекательным и эффективным.</p>
-                    <p>Кроме того, я активно занимаюсь внеклассной деятельностью, организуя различные мероприятия и проекты, направленные на развитие творческих способностей детей. Например, мне особенно нравится проводить занятия по робототехнике, где ребята могут проявить свою фантазию и технические навыки, создавая собственные модели роботов.</p>
-                    <p>Как председатель профсоюзного комитета нашей школы, я также уделяю большое внимание защите интересов наших сотрудников и созданию благоприятных условий для их профессиональной деятельности. Важно, чтобы каждый член коллектива чувствовал поддержку и мог развиваться в своем направлении.</p>
-                </div>
-                <div class="journey-carousel">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="img/fk0.jpg" alt="Занятие по робототехнике"></div>
-                            <div class="swiper-slide"><img src="img/fk1.jpg" alt="Проектная деятельность"></div>
-                            <div class="swiper-slide"><img src="img/fk2.jpg" alt="Внеклассные мероприятия"></div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Методическая копилка -->
-    <section id="methodology">
-        <div class="container">
-            <h2 class="section-title">Методическая копилка</h2>
-            <div class="materials-grid">
-                <div class="material-card">
-                    <div class="card-img"><img src="img/ИМЯ ПРИЛАГ.png" alt="КЛАСТЕР ИМЯ ПРИЛАГАТ"></div>
-                    <div class="card-content">
-                        <h3>КЛАСТЕР ИМЯ ПРИЛАГАТ</h3>
-                        <p>Методический материал по изучению имени прилагательного</p>
-                        <a href="content/КЛАСТЕР ИМЯ ПРИЛАГАТ. НОВЫЙ.pdf" class="btn">Смотреть</a>
-                    </div>
-                </div>
-                <div class="material-card">
-                    <div class="card-img"><img src="img/тексты по кругу.png" alt="Тексты по кругу"></div>
-                    <div class="card-content">
-                        <h3>Тексты по кругу</h3>
-                        <p>Развивающие тексты для работы в группах</p>
-                        <a href="https://disk.yandex.ru/d/P4ZIK7dbXXRihg" class="btn">Смотреть</a>
-                    </div>
-                </div>
-                <div class="material-card">
-                    <div class="card-img"><img src="img/стратегииметод.png" alt="Стратегии смыслового чтения"></div>
-                    <div class="card-content">
-                        <h3>Стратегии смыслового чтения</h3>
-                        <p>Методические материалы по развитию навыков чтения</p>
-                        <a href="https://disk.yandex.ru/d/5P9_QI6z8T5ogQ" class="btn">Смотреть</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Достижения -->
-    <section id="achievements">
-        <div class="container">
-            <h2 class="section-title">Достижения</h2>
-            <div class="achievements-tabs">
-                <button class="tab-btn active" data-tab="certificates">Мои грамоты и сертификаты</button>
-                <button class="tab-btn" data-tab="students">Достижения учеников</button>
-            </div>
-
-            <!-- Вкладка: Мои грамоты -->
-            <div class="tab-content active" id="certificates">
-                <div class="certificates-grid">
-                    <div class="certificate-item" onclick="openModal('img/бп2.jpg','Благодарственное письмо','2025 год')">
-                        <div class="certificate-img"><img src="img/бп2.jpg" alt="Благодарственное письмо"></div>
-                        <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2025 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/бп3.jpg','Благодарственное письмо','2023 год')">
-                        <div class="certificate-img"><img src="img/бп3.jpg" alt="Благодарственное письмо"></div>
-                        <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2023 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/бп4.jpg','Благодарственное письмо','2025 год')">
-                        <div class="certificate-img"><img src="img/бп4.jpg" alt="Благодарственное письмо"></div>
-                        <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2025 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/бп5.jpg','Благодарственное письмо','2025 год')">
-                        <div class="certificate-img"><img src="img/бп5.jpg" alt="Благодарственное письмо"></div>
-                        <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2025 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/Грамота2бНаиш голоса.png','Грамота','2023 год')">
-                        <div class="certificate-img"><img src="img/Грамота2бНаиш голоса.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2023 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/ГрамотаWEDO2024.png','Грамота','2024 год')">
-                        <div class="certificate-img"><img src="img/ГрамотаWEDO2024.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2024 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/Лучший читающий класс 2б2024.png','Диплом','2024 год')">
-                        <div class="certificate-img"><img src="img/Лучший читающий класс 2б2024.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2024 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/Подготовка призера 2024.png','Грамота','2024 год')">
-                        <div class="certificate-img"><img src="img/Подготовка призера 2024.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2024 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/Классгода4в2022.png','Диплом','2022 год')">
-                        <div class="certificate-img"><img src="img/Классгода4в2022.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2022 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/патриотической песнипамяти 1б2023.png','Диплом','2023 год')">
-                        <div class="certificate-img"><img src="img/патриотической песнипамяти 1б2023.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2023 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/ятагильчанин1б2023.png','Диплом','2023 год')">
-                        <div class="certificate-img"><img src="img/ятагильчанин1б2023.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2023 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/я тагильчанин1б2021.png','Диплом','2021 год')">
-                        <div class="certificate-img"><img src="img/я тагильчанин1б2021.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2021 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/ятагильчанин3в2021.png','Диплом','2021 год')">
-                        <div class="certificate-img"><img src="img/ятагильчанин3в2021.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2021 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/тагилсквозьгоды4в2021.png','Грамота','2021 год')">
-                        <div class="certificate-img"><img src="img/тагилсквозьгоды4в2021.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/сдал макулатуру1б2023.png','Диплом','2023 год')">
-                        <div class="certificate-img"><img src="img/сдал макулатуру1б2023.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2023 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/бп75вов2021.png','Благодарственное письмо','2021 год')">
-                        <div class="certificate-img"><img src="img/бп75вов2021.png" alt="Благодарственное письмо"></div>
-                        <div class="certificate-info"><h3>Благодарственное письмо</h3><p>2021 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/грамотасдайкрышки4в2021.png','Грамота','2021 год')">
-                        <div class="certificate-img"><img src="img/грамотасдайкрышки4в2021.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/грамота видео ко дню учителя 4в 2021.png','Грамота','2021 год')">
-                        <div class="certificate-img"><img src="img/грамота видео ко дню учителя 4в 2021.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/всеросурокастрономии4в2021.png','Сертификат','2021 год')">
-                        <div class="certificate-img"><img src="img/всеросурокастрономии4в2021.png" alt="Сертификат"></div>
-                        <div class="certificate-info"><h3>Сертификат</h3><p>2021 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/фотоквест тагил сквозьгода4в2021.png','Грамота','2021 год')">
-                        <div class="certificate-img"><img src="img/фотоквест тагил сквозьгода4в2021.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2021 год</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Вкладка: Достижения учеников -->
-            <div class="tab-content" id="students">
-                <div class="certificates-grid">
-                    <div class="certificate-item" onclick="openModal('img/грамота 2б.png','Грамота','2024 год')">
-                        <div class="certificate-img"><img src="img/грамота 2б.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2024 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/грамота 1б.png','Грамота','2023 год')">
-                        <div class="certificate-img"><img src="img/грамота 1б.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2023 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/диплом4.png','Диплом','2024 год')">
-                        <div class="certificate-img"><img src="img/диплом4.png" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2024 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/Грамота5.png','Грамота','2025 год')">
-                        <div class="certificate-img"><img src="img/Грамота5.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2025 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/диплом нежные слова.jpg','Диплом','2025 год')">
-                        <div class="certificate-img"><img src="img/диплом нежные слова.jpg" alt="Диплом"></div>
-                        <div class="certificate-info"><h3>Диплом</h3><p>2025 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/фуфсофятагильчанин2023.png','Грамота','2023 год')">
-                        <div class="certificate-img"><img src="img/фуфсофятагильчанин2023.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p>2023 год</p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/бородкамилятагильчанин-.png','Грамота','')">
-                        <div class="certificate-img"><img src="img/бородкамилятагильчанин-.png" alt="Грамота"></div>
-                        <div class="certificate-info"><h3>Грамота</h3><p></p></div>
-                    </div>
-                    <div class="certificate-item" onclick="openModal('img/сертификатКузьминыхКонстантин4в2021.png','Сертификат','2021 год')">
-                        <div class="certificate-img"><img src="img/сертификатКузьминыхКонстантин4в2021.png" alt="Сертификат"></div>
-                        <div class="certificate-info"><h3>Сертификат</h3><p>2021 год</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ресурсы -->
-    <section id="resources">
-        <div class="container">
-            <h2 class="section-title">Полезные ресурсы</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="card-img"><img src="img/KIM.png" alt="КИМ"></div>
-                    <div class="card-content">
-                        <h3>КИМ нач.школа</h3>
-                        <p>Ссылки на профессиональные сообщества, методические сайты, нормативные документы.</p>
-                        <a href="https://disk.yandex.ru/d/G9qKF4KpGV0q_w" class="btn">Перейти</a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <div class="card-img"><img src="img/uchi.ru.png" alt="Учи.ру"></div>
-                    <div class="card-content">
-                        <h3>УЧИ.РУ</h3>
-                        <p>Образовательный портал на базе интерактивной платформы для обучения детей</p>
-                        <a href="https://uchi.ru" class="btn">Перейти</a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <div class="card-img"><img src="img/RASH.jpg" alt="РЭШ"></div>
-                    <div class="card-content">
-                        <h3>РЭШ</h3>
-                        <p>«Российская электронная школа» – интерактивные уроки по всему школьному курсу</p>
-                        <a href="https://resh.edu.ru/" class="btn">Перейти</a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <div class="card-img"><img src="img/YKLASS.png" alt="Яндекс.Класс"></div>
-                    <div class="card-content">
-                        <h3>Яндекс.Класс</h3>
-                        <p>Бесплатная образовательная платформа, больше 100 тысяч заданий</p>
-                        <a href="https://education.yandex.ru/uchebnik/main" class="btn">Перейти</a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <div class="card-img"><img src="img/вебинар интерактивная тетрадь.png" alt="Вебинар"></div>
-                    <div class="card-content">
-                        <h3>Вебинар</h3>
-                        <p>"Как педагогу создать интерактивную тетрадь?"</p>
-                        <a href="https://vk.com/video-211610350_456239335" class="btn">Перейти</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Новости -->
-    <section id="news">
-        <div class="container">
-            <h2 class="section-title">Новости</h2>
-            <div class="news-list">
-                <div class="news-item">
-                    <div class="news-date">28 ноября 2025</div>
-                    <h3 class="news-title">Встреча с руководителями образовательных организаций в Нижнем Тагиле</h3>
-                    <p>24 ноября в Нижнетагильском Доме Учителя прошла Школа молодого руководителя. Ее цель — повышение правовой и управленческой грамотности руководителей в сфере социального партнерства.</p>
-                    <p>Председатель горорганизации Профсоюза образования Людмила Кузнецова рассказала о роли Профсоюза в защите прав педагогов, разобрала типичные нарушения трудового законодательства и подчеркнула важность согласования локальных актов с профкомом.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">21 ноября 2025</div>
-                    <h3 class="news-title">Обучающий семинар для председателей первичных профсоюзных организаций</h3>
-                    <p>21 ноября в Горкоме Профсоюза образования состоялся традиционный обучающий семинар для председателей первичных профсоюзных организаций.</p>
-                    <p>Председатель горорганизации Людмила Кузнецова проинформировала собравшихся об итогах пленарного заседания областной организации и ключевых стратегических задачах.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">17 ноября 2025</div>
-                    <h3 class="news-title">И конкурс, и праздник: в Нижнем Тагиле определены лучшие в конкурсе «Молодой учитель - 2025»</h3>
-                    <p>В Нижнем Тагиле 12 ноября состоялся финал конкурса «Молодой учитель — 2025». В нем участвовал 31 педагог. После заочного этапа в финал вышли шестеро.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">8 ноября 2025</div>
-                    <h3 class="news-title">Городской комитет Профсоюза продолжает системную работу по обучению профсоюзного актива</h3>
-                    <p>В рамках реализации плана обучения профсоюзного актива и в соответствии с договором с НОЧУ ДПО ЦПК «ПЕРСПЕКТИВА» в период осенних каникул было организовано онлайн-обучение по охране труда по 40-часовой программе.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Обратная связь -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Обратная связь</h2>
-            <div class="contact-tabs">
-                <button class="contact-tab-btn active" data-tab="form">Написать сообщение</button>
-                <button class="contact-tab-btn" data-tab="direct">Связаться напрямую</button>
-            </div>
-            <div class="contact-tab-content active" id="form">
-                <div class="contact-form">
-                    <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
-                    <form id="feedbackForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfT4q-EM_-T4hdCLKSqSEyYnQZC2Izyq-_4oW0tU6ynjzItXg/formResponse" method="POST" target="hidden-iframe">
-                        <div class="form-group">
-                            <label for="name">Ваше имя *</label>
-                            <input type="text" id="name" name="entry.1526262757" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="entry.1867137281" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Сообщение *</label>
-                            <textarea id="message" name="entry.2140455162" required placeholder="Опишите ваш вопрос или предложение..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">
-                            <span class="btn-text">Отправить сообщение</span>
-                            <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i> Отправка...</span>
-                        </button>
-                    </form>
-                    <div class="form-note"><p><small>Нажимая "Отправить сообщение", вы соглашаетесь с обработкой ваших данных.</small></p></div>
-                </div>
-            </div>
-            <div class="contact-tab-content" id="direct">
-                <div class="direct-contact">
-                    <div class="contact-cards">
-                        <div class="contact-card">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <h3>Электронная почта</h3>
-                            <p>Напишите мне на email</p>
-                            <a href="mailto:E-l-e-n-a-a1@ya.ru" class="contact-link">E-l-e-n-a-a1@ya.ru</a>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon"><i class="fab fa-vk"></i></div>
-                            <h3>ВКонтакте</h3>
-                            <p>Напишите в сообщения</p>
-                            <a href="https://vk.com/mbou_sosh56" target="_blank" class="contact-link">Перейти в ВК</a>
-                        </div>
-                    </div>
-                    <div class="contact-instructions">
-                        <h3>Как связаться:</h3>
-                        <ul>
-                            <li>📧 <strong>Email</strong> - для подробных вопросов и документации</li>
-                            <li>💬 <strong>Социальные сети</strong> - для быстрой связи</li>
-                            <li>🕒 <strong>Время для связи</strong>: Пн-Пт с 9:00 до 18:00</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="main">
+ <section class="hero" id="home" aria-labelledby="heroTitle">
+  <div class="container">
+   <div class="hero-grid">
+    <div>
+     <div class="eyebrow">Личный сайт педагога · Нижний Тагил</div>
+     <h1 id="heroTitle">Добычкина<br>Елена <span>Сергеевна</span></h1>
+     <p class="hero-copy">Помогаю детям открывать мир, верить в себя и учиться с интересом. Делюсь опытом, идеями и маленькими шагами к большим открытиям.</p>
+     <div class="actions"><a class="btn" href="#about">Давайте знакомиться <span class="arrow" aria-hidden="true">↗</span></a><a class="btn secondary" href="#methodology">Материалы для уроков</a></div>
+    </div>
+    <figure class="portrait">
+     <div class="portrait-fallback" aria-hidden="true"><span class="monogram">Ед</span><span class="portrait-note">Учить. Поддерживать. Вдохновлять.</span></div>
+     <!-- Ваш оригинальный портрет. Если файла нет, отображается монограмма. -->
+     <img src="img/mmmm.jpg" alt="Добычкина Елена Сергеевна" fetchpriority="high" onerror="this.hidden=true">
+     <figcaption class="portrait-caption"><span class="symbol" aria-hidden="true">✳</span><p><strong>Каждый ребёнок — целый мир.</strong>И в каждом есть свой талант.</p></figcaption>
+    </figure>
+   </div>
+   <div class="hero-bottom">
+    <div class="stat"><span class="stat-number">8+</span><p>лет педагогического<br>опыта</p></div>
+    <div class="stat"><span class="stat-number">I</span><p>квалификационная<br>категория</p></div>
+    <p class="statement">С заботой о детях.<br>С любовью к своему делу.</p>
+   </div>
+  </div>
+ </section>
+ <section class="section" id="about" aria-labelledby="aboutTitle">
+  <div class="container about-layout">
+   <aside class="about-aside">
+    <div class="eyebrow">01 / Обо мне</div><h2 id="aboutTitle">Быть рядом.<br>Помогать расти.</h2>
+    <img class="about-photo" src="img/about-photo.jpg" alt="Елена Сергеевна в классе" style="margin-top:28px" onerror="this.hidden=true">
+    <blockquote class="about-quote">«Моя миссия — вдохновлять и поддерживать каждого ученика на пути к успеху, открывая перед ним двери в мир знаний и творчества».</blockquote>
+   </aside>
+   <div class="about-body">
+    <p class="lead">Мой путь в профессию начался с искренней любви к детям и желания помогать им раскрывать свой потенциал.</p>
+    <p>Каждый день я прихожу в школу с уверенностью, что могу сделать мир моих учеников чуть ярче и интереснее. Работаю учителем более 8 лет и имею первую квалификационную категорию.</p>
+    <div class="education" aria-label="Образование">
+     <article><span class="num">01</span><div><h3>Дошкольное образование</h3><p>Нижнетагильский педагогический колледж.</p></div></article>
+     <article><span class="num">02</span><div><h3>Учитель начальных классов</h3><p>Профессиональная переподготовка в АНО ДПО «Волгоградская гуманитарная академия профессиональной подготовки специалистов социальной сферы».</p></div></article>
+     <article><span class="num">03</span><div><h3>Практическая психология</h3><p>Получаю высшее образование в Нижнетагильском государственном социально-педагогическом институте — филиале ФГАОУ ВО «Уральский государственный педагогический университет».</p></div></article>
+    </div>
+   </div>
+  </div>
+ </section>
+ <section class="section journey" id="journey" aria-labelledby="journeyTitle">
+  <div class="container">
+   <div class="section-heading"><div><div class="eyebrow">02 / Мой путь</div><h2 id="journeyTitle">Больше, чем уроки</h2></div><p class="muted">Знания становятся ценнее, когда за ними — доверие, творчество и поддержка.</p></div>
+   <div class="journey-layout">
+    <div>
+     <article class="principle"><span class="principle-number">01</span><div><h3>Доверие и уверенность</h3><p>Создаю атмосферу взаимопонимания. Ищу подходы, которые помогают каждому ребёнку раскрыть свои таланты и поверить в себя.</p></div></article>
+     <article class="principle"><span class="principle-number">02</span><div><h3>Творчество и робототехника</h3><p>Организую внеклассные мероприятия и проекты. На занятиях по робототехнике ребята придумывают и создают собственные модели.</p></div></article>
+     <article class="principle"><span class="principle-number">03</span><div><h3>Поддержка коллег</h3><p>Как председатель профсоюзного комитета школы защищаю интересы сотрудников и помогаю создавать условия для профессионального развития.</p></div></article>
+    </div>
+    <div class="carousel" role="region" aria-roledescription="карусель" aria-label="Школьная жизнь">
+     <div id="slideFrame"><div class="slide-visual" aria-hidden="true"><span class="big-index" id="slideIndex">01</span><p id="slideFallback">От идеи — к своему первому роботу.</p></div><img class="slide-image" id="slideImage" src="img/fk0.jpg" alt="Занятие по робототехнике" hidden></div>
+     <div class="slide-caption"><div aria-live="polite" aria-atomic="true"><strong id="slideTitle">Занятия по робототехнике</strong><p id="slideCount">01 / 03</p></div><div class="slider-buttons"><button class="icon-btn" id="prevSlide" aria-label="Предыдущий слайд">←</button><button class="icon-btn" id="nextSlide" aria-label="Следующий слайд">→</button></div></div>
+    </div>
+   </div>
+  </div>
+ </section>
+ <section class="section" id="methodology" aria-labelledby="materialsTitle">
+  <div class="container">
+   <div class="section-heading"><div><div class="eyebrow">03 / Методическая копилка</div><h2 id="materialsTitle">Идеи для живых уроков</h2></div><p>Материалы, которые помогают сделать обучение понятным, интересным и увлекательным.</p></div>
+   <div class="cards">
+    <article class="material"><div class="material-cover"><div class="cover-type" aria-hidden="true"><strong>Аа</strong><small>Слова, которые описывают мир</small></div><img src="img/ИМЯ ПРИЛАГ.png" alt="Обложка материала об имени прилагательном" onerror="this.hidden=true"></div><div class="material-body"><span class="tag">Русский язык · PDF</span><h3>Кластер «Имя прилагательное»</h3><p>Наглядный материал для изучения имени прилагательного.</p><a href="content/КЛАСТЕР ИМЯ ПРИЛАГАТ. НОВЫЙ.pdf" target="_blank" rel="noopener">Открыть материал <span aria-hidden="true">↗</span></a></div></article>
+    <article class="material"><div class="material-cover"><div class="cover-type" aria-hidden="true"><strong>Абв</strong><small>Читаем вместе. Думаем вместе.</small></div><img src="img/тексты по кругу.png" alt="Обложка материала «Тексты по кругу»" onerror="this.hidden=true"></div><div class="material-body"><span class="tag">Групповая работа · Яндекс Диск</span><h3>Тексты по кругу</h3><p>Развивающие тексты для совместного чтения и работы в группах.</p><a href="https://disk.yandex.ru/d/P4ZIK7dbXXRihg" target="_blank" rel="noopener noreferrer">Открыть материал <span aria-hidden="true">↗</span></a></div></article>
+    <article class="material"><div class="material-cover"><div class="cover-type" aria-hidden="true"><strong>«…»</strong><small>За каждой строкой — смысл</small></div><img src="img/стратегииметод.png" alt="Обложка материала о смысловом чтении" onerror="this.hidden=true"></div><div class="material-body"><span class="tag">Чтение · Яндекс Диск</span><h3>Стратегии смыслового чтения</h3><p>Методические материалы для развития навыков осмысленного чтения.</p><a href="https://disk.yandex.ru/d/5P9_QI6z8T5ogQ" target="_blank" rel="noopener noreferrer">Открыть материал <span aria-hidden="true">↗</span></a></div></article>
+   </div>
+  </div>
+ </section>
+ <section class="section achievements" id="achievements" aria-labelledby="achievementsTitle">
+  <div class="container">
+   <div class="section-heading"><div><div class="eyebrow">04 / Достижения</div><h2 id="achievementsTitle">Поводы для гордости</h2></div><p>Профессиональные достижения и успехи учеников — результат общей работы.</p></div>
+   <div class="toolbar"><div class="tabs" role="tablist" aria-label="Категория достижений"><button class="tab" id="teacherTab" role="tab" aria-controls="certPanel" aria-selected="true" data-category="teacher">Мои грамоты и сертификаты</button><button class="tab" id="studentTab" role="tab" aria-controls="certPanel" aria-selected="false" tabindex="-1" data-category="student">Достижения учеников</button></div><label class="select-wrap" for="yearFilter">Период<select id="yearFilter"><option value="all">Все годы</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option value="unknown">Без даты</option></select></label></div>
+   <div id="certPanel" role="tabpanel" aria-labelledby="teacherTab" tabindex="0"><div class="cert-grid" id="certGrid"></div><p class="empty" id="certEmpty" hidden>За этот период документов нет. Выберите другой год.</p><p class="cert-status" id="certStatus" role="status"></p><div class="more-row"><button class="btn secondary" id="showMore" hidden>Показать все документы <span aria-hidden="true">↓</span></button></div></div>
+   <noscript><p>Чтобы просмотреть галерею документов, включите JavaScript в браузере.</p></noscript>
+  </div>
+ </section>
+ <section class="section" id="resources" aria-labelledby="resourcesTitle">
+  <div class="container">
+   <div class="section-heading"><div><div class="eyebrow">05 / Полезные ресурсы</div><h2 id="resourcesTitle">Учиться и вдохновляться</h2></div><p>Образовательные платформы и материалы для педагогов, детей и родителей.</p></div>
+   <div class="resources-list">
+    <a class="resource" href="https://disk.yandex.ru/d/G9qKF4KpGV0q_w" target="_blank" rel="noopener noreferrer"><span class="resource-logo-wrap"><span class="resource-index">01</span><img class="resource-logo" src="img/KIM.png" alt="" onerror="this.hidden=true"></span><h3>КИМ · Начальная школа</h3><p>Методические материалы, профессиональные сообщества и документы.</p><span class="arrow" aria-hidden="true">↗</span></a>
+    <a class="resource" href="https://uchi.ru/" target="_blank" rel="noopener noreferrer"><span class="resource-logo-wrap"><span class="resource-index">02</span><img class="resource-logo" src="img/uchi.ru.png" alt="" onerror="this.hidden=true"></span><h3>Учи.ру</h3><p>Интерактивная образовательная платформа для обучения детей.</p><span class="arrow" aria-hidden="true">↗</span></a>
+    <a class="resource" href="https://resh.edu.ru/" target="_blank" rel="noopener noreferrer"><span class="resource-logo-wrap"><span class="resource-index">03</span><img class="resource-logo" src="img/RASH.jpg" alt="" onerror="this.hidden=true"></span><h3>Российская электронная школа</h3><p>Интерактивные уроки по школьному курсу.</p><span class="arrow" aria-hidden="true">↗</span></a>
+    <a class="resource" href="https://education.yandex.ru/uchebnik/main" target="_blank" rel="noopener noreferrer"><span class="resource-logo-wrap"><span class="resource-index">04</span><img class="resource-logo" src="img/YKLASS.png" alt="" onerror="this.hidden=true"></span><h3>Яндекс Учебник</h3><p>Образовательная платформа с заданиями для школьников.</p><span class="arrow" aria-hidden="true">↗</span></a>
+    <a class="resource" href="https://vk.com/video-211610350_456239335" target="_blank" rel="noopener noreferrer"><span class="resource-logo-wrap"><span class="resource-index">05</span><img class="resource-logo" src="img/вебинар интерактивная тетрадь.png" alt="" onerror="this.hidden=true"></span><h3>Интерактивная тетрадь</h3><p>Вебинар «Как педагогу создать интерактивную тетрадь?»</p><span class="arrow" aria-hidden="true">↗</span></a>
+   </div>
+  </div>
+ </section>
+ <section class="section news" id="news" aria-labelledby="newsTitle">
+  <div class="container news-layout">
+   <aside><div class="eyebrow">06 / Новости</div><h2 id="newsTitle">Из жизни<br>образования</h2><p>События, встречи и профессиональное развитие.</p><p class="archive-note">Архив публикаций · ноябрь 2025</p></aside>
+   <div>
+    <details class="news-entry" open><summary><div><time datetime="2025-11-28">28 ноября 2025</time><h3>Встреча с руководителями образовательных организаций в Нижнем Тагиле</h3></div></summary><div class="news-text"><p>24 ноября в Нижнетагильском Доме Учителя прошла Школа молодого руководителя. Её цель — повышение правовой и управленческой грамотности руководителей в сфере социального партнёрства.</p><p>Председатель горорганизации Профсоюза образования Людмила Кузнецова рассказала о роли Профсоюза в защите прав педагогов, разобрала типичные нарушения трудового законодательства и подчеркнула важность согласования локальных актов с профкомом.</p></div></details>
+    <details class="news-entry"><summary><div><time datetime="2025-11-21">21 ноября 2025</time><h3>Обучающий семинар для председателей первичных профсоюзных организаций</h3></div></summary><div class="news-text"><p>21 ноября в Горкоме Профсоюза образования состоялся традиционный обучающий семинар для председателей первичных профсоюзных организаций.</p><p>Председатель горорганизации Людмила Кузнецова проинформировала собравшихся об итогах пленарного заседания областной организации и ключевых стратегических задачах.</p></div></details>
+    <details class="news-entry"><summary><div><time datetime="2025-11-17">17 ноября 2025</time><h3>И конкурс, и праздник: «Молодой учитель — 2025»</h3></div></summary><div class="news-text"><p>В Нижнем Тагиле 12 ноября состоялся финал конкурса «Молодой учитель — 2025». В нём участвовал 31 педагог. После заочного этапа в финал вышли шестеро.</p></div></details>
+    <details class="news-entry"><summary><div><time datetime="2025-11-08">8 ноября 2025</time><h3>Системная работа по обучению профсоюзного актива</h3></div></summary><div class="news-text"><p>В рамках реализации плана обучения профсоюзного актива и в соответствии с договором с НОЧУ ДПО ЦПК «ПЕРСПЕКТИВА» в период осенних каникул было организовано онлайн-обучение по охране труда по 40-часовой программе.</p></div></details>
+   </div>
+  </div>
+ </section>
+ <section class="section" id="contact" aria-labelledby="contactTitle">
+  <div class="container contact-layout">
+   <div class="contact-copy"><div class="eyebrow">07 / Обратная связь</div><h2 id="contactTitle">Хороший разговор<br>начинается с «Здравствуйте».</h2><p>Есть вопрос, идея или предложение? Буду рада общению с родителями и коллегами.</p><div class="contact-links"><a href="mailto:E-l-e-n-a-a1@ya.ru">E-l-e-n-a-a1@ya.ru ↗</a><a href="https://vk.com/mbou_sosh56" target="_blank" rel="noopener noreferrer">Сообщество МБОУ СОШ №56 ↗</a></div><p class="contact-hours">Время для связи: Пн–Пт, 9:00–18:00.<br>Для подробных вопросов и документов — электронная почта.</p></div>
+   <div class="contact-form"><h3>Написать сообщение</h3><p>Заполните поля — затем подтвердите отправку в Google Форме.</p>
+    <!-- Используется исходная Google Форма. Сайт не имитирует успешную отправку.
+         Проверьте доступность формы и соответствие entry.* перед публикацией. -->
+    <form id="feedbackForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfT4q-EM_-T4hdCLKSqSEyYnQZC2Izyq-_4oW0tU6ynjzItXg/viewform" method="GET" target="_blank" rel="noopener noreferrer">
+     <input type="hidden" name="usp" value="pp_url">
+     <div class="field"><label for="name">Ваше имя *</label><input id="name" name="entry.1526262757" autocomplete="name" required maxlength="150" placeholder="Как к вам обращаться?"></div>
+     <div class="field"><label for="email">Электронная почта *</label><input id="email" name="entry.1867137281" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.ru"></div>
+     <div class="field"><label for="message">Сообщение *</label><textarea id="message" name="entry.2140455162" required maxlength="2000" placeholder="Ваш вопрос или предложение…"></textarea></div>
+     <button class="btn" type="submit">Продолжить в Google Форме <span aria-hidden="true">↗</span></button>
+     <p class="form-note">Поля передаются Google для заполнения формы и могут сохраниться в истории браузера. Не указывайте конфиденциальные сведения. Отправка происходит только после нажатия «Отправить» в Google Форме.</p>
+     <p class="form-status" id="formStatus" role="status" hidden></p>
+    </form>
+   </div>
+  </div>
+ </section>
 </main>
-
-<!-- Модалка для грамот -->
-<div class="certificate-modal" id="certificateModal">
-    <div class="modal-container">
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-        <div class="modal-content"><img id="modalImage" src="" alt="Грамота"></div>
-        <div class="modal-info">
-            <h3 id="modalTitle">Название</h3>
-            <p id="modalYear">Год</p>
-        </div>
-    </div>
-</div>
-
-<!-- Модалка инструкции -->
-<div class="guide-modal" id="guideModal">
-    <div class="guide-modal-container">
-        <div class="guide-header">
-            <h3>📖 Инструкция по использованию сайта</h3>
-            <button class="guide-close" onclick="toggleGuide()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="guide-content">
-            <div class="guide-columns">
-                <div class="guide-section">
-                    <h4><i class="fas fa-chalkboard-teacher"></i> Для педагогов:</h4>
-                    <ul>
-                        <li>В разделе <strong>"Методическая копилка"</strong> найдете готовые материалы для уроков</li>
-                        <li>Используйте <strong>"Ресурсы"</strong> для поиска дополнительных материалов</li>
-                        <li>В <strong>"Достижениях"</strong> познакомьтесь с профессиональным опытом</li>
-                    </ul>
-                </div>
-                <div class="guide-section">
-                    <h4><i class="fas fa-users"></i> Для родителей:</h4>
-                    <ul>
-                        <li>В <strong>"Достижениях"</strong> увидите успехи учеников</li>
-                        <li>Читайте <strong>"Новости"</strong> чтобы быть в курсе школьных событий</li>
-                        <li>Используйте <strong>"Обратную связь"</strong> для вопросов и предложений</li>
-                    </ul>
-                </div>
-                <div class="guide-section">
-                    <h4><i class="fas fa-compass"></i> Для навигации:</h4>
-                    <ul>
-                        <li>Используйте верхнее меню для перехода между разделами</li>
-                        <li>Нажмите на логотип чтобы вернуться на главную страницу</li>
-                        <li>На мобильных устройствах используйте кнопку меню ☰</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="guide-tips">
-                <h4><i class="fas fa-lightbulb"></i> Полезные советы:</h4>
-                <ul>
-                    <li>Все изображения можно увеличить кликом для детального просмотра</li>
-                    <li>Форма обратной связи сохраняет ваши сообщения</li>
-                    <li>Настройки доступности сохраняются автоматически</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Футер -->
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Контакты</h4>
-                <p><i class="fas fa-envelope"></i> E-l-e-n-a-a1@ya.ru</p>
-                <a href="https://vk.com/mbou_sosh56" target="_blank"><i class="fab fa-vk"></i> МБОУ СОШ №56</a>
-            </div>
-            <div class="footer-section">
-                <button class="footer-help-btn" onclick="toggleGuide()">
-                    <i class="fas fa-question-circle"></i> Инструкция по сайту
-                </button>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Добычкина Елена Сергеевна</p>
-            <p><small>Все материалы сайта являются интеллектуальной собственностью автора. При использовании материалов ссылка на источник обязательна.</small></p>
-        </div>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<footer class="footer"><div class="container"><div class="footer-top"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">ЕД</span><span class="brand-name">Елена Добычкина<small>С любовью к своему делу</small></span></a><button id="guideOpen">Как пользоваться сайтом?</button><a class="back-top" href="#home">Наверх <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><p>© <span id="copyrightYear">2026</span> Добычкина Елена Сергеевна</p><p>Материалы сайта являются интеллектуальной собственностью автора. При использовании материалов ссылка на источник обязательна.</p></div></div></footer>
+<dialog id="certificateDialog" aria-labelledby="modalTitle"><div class="dialog-header"><h2 id="modalTitle">Документ</h2><button class="icon-btn" data-close aria-label="Закрыть просмотр">×</button></div><p class="modal-meta" id="modalYear"></p><img class="modal-image" id="modalImage" alt="" hidden><div class="modal-empty" id="modalEmpty" hidden><p>Изображение пока недоступно</p><p>Добавьте оригинал документа в папку img рядом с файлом сайта.</p></div></dialog>
+<dialog id="guideDialog" aria-labelledby="guideTitle"><div class="dialog-header"><h2 id="guideTitle">Добро пожаловать!</h2><button class="icon-btn" data-close aria-label="Закрыть инструкцию">×</button></div><div class="guide-grid"><div><h3>Педагогам</h3><p>В «Материалах» — разработки для уроков. В «Ресурсах» — ссылки на образовательные платформы и вебинар.</p></div><div><h3>Родителям</h3><p>Во вкладке «Достижения учеников» можно посмотреть грамоты. Выберите год, нажмите на документ для увеличения. В «Новостях» нажмите на заголовок, чтобы прочитать публикацию.</p></div><div><h3>Для связи</h3><p>Напишите на электронную почту или заполните поля в разделе «Обратная связь». Чтобы отправить сообщение через форму, завершите отправку на открывшейся странице Google.</p></div><div><h3>Удобная навигация</h3><p>На телефоне меню открывается кнопкой меню. Диалоги закрываются крестиком, клавишей Esc или нажатием на затемнённый фон. Все основные действия доступны с клавиатуры.</p></div></div></dialog>
 <script>
-    // Мобильное меню
-    document.getElementById('mobileMenuToggle').addEventListener('click', function() {
-        document.getElementById('mainNav').classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-item-header a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.getElementById('mainNav').classList.remove('active');
-        });
-    });
-
-    // Swiper
-    new Swiper('.mySwiper', {
-        loop: true,
-        pagination: { el: '.swiper-pagination', clickable: true },
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        autoplay: { delay: 4000 }
-    });
-
-    // Табы достижений
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-            document.getElementById(this.dataset.tab).classList.add('active');
-        });
-    });
-
-    // Табы контактов
-    document.querySelectorAll('.contact-tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.contact-tab-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            document.querySelectorAll('.contact-tab-content').forEach(tc => tc.classList.remove('active'));
-            document.getElementById(this.dataset.tab).classList.add('active');
-        });
-    });
-
-    // Модалка грамот
-    function openModal(src, title, year) {
-        document.getElementById('modalImage').src = src;
-        document.getElementById('modalTitle').textContent = title;
-        document.getElementById('modalYear').textContent = year;
-        document.getElementById('certificateModal').classList.add('show');
-    }
-    function closeModal() {
-        document.getElementById('certificateModal').classList.remove('show');
-    }
-    document.getElementById('certificateModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-    });
-
-    // Инструкция
-    function toggleGuide() {
-        document.getElementById('guideModal').classList.toggle('show');
-    }
-    document.getElementById('guideModal').addEventListener('click', function(e) {
-        if (e.target === this) toggleGuide();
-    });
-
-    // Форма
-    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = this.querySelector('.submit-btn');
-        btn.classList.add('loading');
-        btn.disabled = true;
-        setTimeout(() => {
-            btn.classList.remove('loading');
-            btn.disabled = false;
-            alert('Сообщение отправлено! (демонстрационный режим)');
-            this.reset();
-        }, 3000);
-    });
+'use strict';
+// Меню: закрытие по ссылке, Escape, клику снаружи и при расширении экрана.
+const menuToggle=document.getElementById('menuToggle');
+const mainNav=document.getElementById('mainNav');
+function setMenu(open){mainNav.classList.toggle('open',open);menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');}
+menuToggle.addEventListener('click',()=>setMenu(!mainNav.classList.contains('open')));
+mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('click',e=>{if(!e.target.closest('.header'))setMenu(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mainNav.classList.contains('open')){setMenu(false);menuToggle.focus();}});
+matchMedia('(min-width:941px)').addEventListener('change',e=>{if(e.matches)setMenu(false);});
+// Подсветка текущего раздела.
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){mainNav.querySelectorAll('a').forEach(a=>{if(a.hash==='#'+entry.target.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}});},{rootMargin:'-15% 0px -65% 0px'});document.querySelectorAll('main section[id]').forEach(s=>observer.observe(s));}
+// Нативная карусель без автопрокрутки и внешних зависимостей.
+const slides=[['img/fk0.jpg','Занятия по робототехнике','От идеи — к своему первому роботу.'],['img/fk1.jpg','Проектная деятельность','Думать, пробовать и создавать вместе.'],['img/fk2.jpg','Внеклассные мероприятия','Открытия продолжаются после уроков.']];
+let slide=0;const slideImage=document.getElementById('slideImage');const slideVisual=document.querySelector('.slide-visual');
+function showSlide(){const item=slides[slide];slideImage.hidden=true;slideVisual.hidden=false;document.getElementById('slideTitle').textContent=item[1];document.getElementById('slideCount').textContent=`0${slide+1} / 03`;document.getElementById('slideIndex').textContent=`0${slide+1}`;document.getElementById('slideFallback').textContent=item[2];slideImage.alt=item[1];slideImage.src=item[0];}
+slideImage.addEventListener('load',()=>{slideImage.hidden=false;slideVisual.hidden=true;});slideImage.addEventListener('error',()=>{slideImage.hidden=true;slideVisual.hidden=false;});
+document.getElementById('prevSlide').addEventListener('click',()=>{slide=(slide+slides.length-1)%slides.length;showSlide();});document.getElementById('nextSlide').addEventListener('click',()=>{slide=(slide+1)%slides.length;showSlide();});showSlide();
+// Сохранены все 28 документов и точные имена файлов из исходного сайта.
+// Формат: [имя файла в img, название, год]. Новые документы добавляйте здесь.
+const documents={teacher:[
+ ['бп2.jpg','Благодарственное письмо','2025'],['бп3.jpg','Благодарственное письмо','2023'],['бп4.jpg','Благодарственное письмо','2025'],['бп5.jpg','Благодарственное письмо','2025'],
+ ['Грамота2бНаиш голоса.png','Грамота','2023'],['ГрамотаWEDO2024.png','Грамота','2024'],['Лучший читающий класс 2б2024.png','Диплом','2024'],['Подготовка призера 2024.png','Грамота','2024'],['Классгода4в2022.png','Диплом','2022'],['патриотической песнипамяти 1б2023.png','Диплом','2023'],['ятагильчанин1б2023.png','Диплом','2023'],['я тагильчанин1б2021.png','Диплом','2021'],['ятагильчанин3в2021.png','Диплом','2021'],['тагилсквозьгоды4в2021.png','Грамота','2021'],['сдал макулатуру1б2023.png','Диплом','2023'],['бп75вов2021.png','Благодарственное письмо','2021'],['грамотасдайкрышки4в2021.png','Грамота','2021'],['грамота видео ко дню учителя 4в 2021.png','Грамота','2021'],['всеросурокастрономии4в2021.png','Сертификат','2021'],['фотоквест тагил сквозьгода4в2021.png','Грамота','2021']
+],student:[['грамота 2б.png','Грамота','2024'],['грамота 1б.png','Грамота','2023'],['диплом4.png','Диплом','2024'],['Грамота5.png','Грамота','2025'],['диплом нежные слова.jpg','Диплом','2025'],['фуфсофятагильчанин2023.png','Грамота','2023'],['бородкамилятагильчанин-.png','Грамота',''],['сертификатКузьминыхКонстантин4в2021.png','Сертификат','2021']]};
+let category='teacher',expanded=false;const grid=document.getElementById('certGrid');const filter=document.getElementById('yearFilter');const more=document.getElementById('showMore');
+function renderCertificates(){const items=documents[category].filter(d=>filter.value==='all'||(filter.value==='unknown'?!d[2]:d[2]===filter.value)).sort((a,b)=>Number(b[2])-Number(a[2]));const shown=expanded?items:items.slice(0,4);grid.replaceChildren();shown.forEach((doc,index)=>{const button=document.createElement('button');button.className='cert';button.type='button';button.setAttribute('aria-label',`Открыть: ${doc[1]}, ${doc[2]||'без даты'}, документ ${index+1}`);const preview=document.createElement('span');preview.className='cert-preview';const empty=document.createElement('span');empty.className='cert-empty';empty.textContent='↗';empty.setAttribute('aria-hidden','true');const img=document.createElement('img');img.src='img/'+doc[0];img.alt='';img.addEventListener('error',()=>{img.hidden=true;});preview.append(empty,img);const body=document.createElement('span');body.className='cert-body';const title=document.createElement('strong');title.textContent=doc[1];const year=document.createElement('span');year.textContent=doc[2]?doc[2]+' год':'Без даты';body.append(title,year);button.append(preview,body);button.addEventListener('click',()=>openCertificate(doc));grid.append(button);});document.getElementById('certEmpty').hidden=items.length>0;document.getElementById('certStatus').textContent=items.length?`Показано ${shown.length} из ${items.length} · Нажмите на документ для просмотра`:'';more.hidden=items.length<=4;more.textContent=expanded?'Свернуть галерею ↑':'Показать все документы ↓';}
+const tabs=Array.from(document.querySelectorAll('[role="tab"]'));
+function activateTab(tab){category=tab.dataset.category;expanded=false;tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;});document.getElementById('certPanel').setAttribute('aria-labelledby',tab.id);renderCertificates();}
+tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>activateTab(tab));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(index+1)%tabs.length;else if(e.key==='ArrowLeft')next=(index-1+tabs.length)%tabs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=tabs.length-1;else return;e.preventDefault();tabs[next].focus();activateTab(tabs[next]);});});
+filter.addEventListener('change',()=>{expanded=false;renderCertificates();});more.addEventListener('click',()=>{expanded=!expanded;renderCertificates();if(!expanded)document.getElementById('achievements').scrollIntoView();});renderCertificates();
+// Просмотр оригиналов. Никаких вымышленных изображений грамот.
+const certDialog=document.getElementById('certificateDialog');const modalImg=document.getElementById('modalImage');const modalEmpty=document.getElementById('modalEmpty');
+modalImg.addEventListener('error',()=>{modalImg.hidden=true;modalEmpty.hidden=false;});modalImg.addEventListener('load',()=>{modalImg.hidden=false;modalEmpty.hidden=true;});
+function openDialog(dialog){dialog.showModal();document.body.classList.add('modal-open');}
+function openCertificate(doc){document.getElementById('modalTitle').textContent=doc[1];document.getElementById('modalYear').textContent=doc[2]?doc[2]+' год':'Год не указан';modalImg.hidden=true;modalEmpty.hidden=true;modalImg.alt=doc[1]+(doc[2]?' — '+doc[2]:'');modalImg.src='img/'+doc[0];openDialog(certDialog);}
+document.querySelectorAll('dialog').forEach(dialog=>{dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});dialog.addEventListener('close',()=>document.body.classList.remove('modal-open'));});
+document.getElementById('guideOpen').addEventListener('click',()=>openDialog(document.getElementById('guideDialog')));
+// Реальная отправка НЕ подтверждается по таймеру: пользователь завершает её в Google.
+document.getElementById('feedbackForm').addEventListener('submit',()=>{const status=document.getElementById('formStatus');status.hidden=false;status.textContent='Завершите отправку в новой вкладке Google Формы. Если она не открылась или недоступна, напишите на электронную почту. Введённый текст сохранён в полях этой страницы.';});
+document.getElementById('copyrightYear').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
